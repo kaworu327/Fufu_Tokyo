@@ -67,7 +67,7 @@
 </head>
 <body class="bg-brand-light dark:bg-brand-dark text-zinc-900 dark:text-zinc-100 min-h-screen font-sans flex flex-col selection:bg-zinc-200 dark:selection:bg-zinc-800 transition-colors duration-300">
 
-    <!-- STREAMING_CHUNK: Rendering sticky header navigation and layout... -->
+    <!-- STREAMING_CHUNK: Formatting header bar and local time clocks... -->
     <!-- Top Minimal Header / Navigation Bar -->
     <header class="sticky top-0 z-40 backdrop-blur-md bg-brand-light/80 dark:bg-brand-dark/80 border-b border-zinc-200/50 dark:border-zinc-800/50 transition-colors duration-300">
         <div class="max-w-5xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between">
@@ -122,6 +122,9 @@
                 </button>
                 <button onclick="switchTab('hotels')" id="tab-hotels" class="tab-btn px-5 py-2.5 text-base font-semibold tracking-wide border-b-2 border-transparent text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 focus:outline-none transition-all whitespace-nowrap">
                     Hotels
+                </button>
+                <button onclick="switchTab('restaurants')" id="tab-restaurants" class="tab-btn px-5 py-2.5 text-base font-semibold tracking-wide border-b-2 border-transparent text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 focus:outline-none transition-all whitespace-nowrap">
+                    Restaurants
                 </button>
                 <button onclick="switchTab('shops')" id="tab-shops" class="tab-btn px-5 py-2.5 text-base font-semibold tracking-wide border-b-2 border-transparent text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 focus:outline-none transition-all whitespace-nowrap">
                     Shops
@@ -421,9 +424,228 @@
             </div>
         </div>
 
+        <!-- ================= RESTAURANTS TAB ================= -->
+        <div id="content-restaurants" class="tab-content hidden space-y-10 animate-fadeIn">
+            <!-- STREAMING_CHUNK: Structuring restaurant listings and categories... -->
+            <div class="flex flex-wrap items-center gap-3 pb-6 border-b border-zinc-200/50 dark:border-zinc-800/50">
+                <button onclick="filterRestaurant('all')" id="res-all" class="res-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-900 dark:bg-white text-brand-light dark:text-brand-dark focus:outline-none">
+                    All Categories
+                </button>
+                <button onclick="filterRestaurant('ramen')" id="res-ramen" class="res-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200/50 focus:outline-none">
+                    Ramen
+                </button>
+                <button onclick="filterRestaurant('steak')" id="res-steak" class="res-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200/50 focus:outline-none">
+                    Steak
+                </button>
+                <button onclick="filterRestaurant('bbq')" id="res-bbq" class="res-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200/50 focus:outline-none">
+                    BBQ
+                </button>
+                <button onclick="filterRestaurant('sushi')" id="res-sushi" class="res-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200/50 focus:outline-none">
+                    Sushi
+                </button>
+                <button onclick="filterRestaurant('others')" id="res-others" class="res-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200/50 focus:outline-none">
+                    Others
+                </button>
+            </div>
+
+            <!-- Restaurants Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6" id="restaurantsGrid">
+                
+                <!-- 1. Ramen: らぁ麺や 嶋 -->
+                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 restaurant-card card-item" data-category="ramen" data-search="らぁ麺や 嶋 shima raman ramen 4.07 tablecheck shinjuku booking maps">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <span class="text-xs tracking-wider uppercase font-bold text-zinc-400 font-mono">Ramen</span>
+                            <span class="px-2.5 py-1 text-xs font-extrabold bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded">Tabelog: 4.07 ★</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-zinc-900 dark:text-white mt-4 font-serif">らぁ麺や 嶋</h4>
+                        <p class="text-sm text-zinc-500 mt-2">Arguably Tokyo's most revered and highly rated modern shoyu ramen house.</p>
+                    </div>
+                    <div class="pt-4 mt-6 border-t border-zinc-100 dark:border-zinc-800 flex flex-col space-y-2.5">
+                        <div class="flex justify-between items-center text-sm">
+                            <a href="https://tabelog.com/tokyo/A1304/A130401/13247487/" target="_blank" class="text-zinc-400 hover:text-zinc-900 dark:hover:text-white font-semibold">Tabelog ↗</a>
+                            <a href="https://maps.app.goo.gl/DJLrzkb8A6BBGoc7A" target="_blank" class="inline-flex items-center space-x-1 text-zinc-900 dark:text-white hover:underline font-bold">
+                                <span>Map</span>
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            </a>
+                        </div>
+                        <a href="https://www.tablecheck.com/zh-TW/shops/ramenya-shima/reserve" target="_blank" class="block w-full text-center py-2 bg-zinc-900 dark:bg-white text-brand-light dark:text-brand-dark rounded-xl text-sm font-bold hover:opacity-90 transition-all">
+                            Book on TableCheck ↗
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 2. Ramen: 中華蕎麦 とみ田 -->
+                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 restaurant-card card-item" data-category="ramen" data-search="中華蕎麦 とみ田 tomita raman ramen tsukemen 4.06 omakase chiba booking maps">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <span class="text-xs tracking-wider uppercase font-bold text-zinc-400 font-mono">Ramen</span>
+                            <span class="px-2.5 py-1 text-xs font-extrabold bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded">Tabelog: 4.06 ★</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-zinc-900 dark:text-white mt-4 font-serif">中華蕎麦 とみ田</h4>
+                        <p class="text-sm text-zinc-500 mt-2">The undisputed king of rich seafood tonkotsu tsukemen in Japan.</p>
+                    </div>
+                    <div class="pt-4 mt-6 border-t border-zinc-100 dark:border-zinc-800 flex flex-col space-y-2.5">
+                        <div class="flex justify-between items-center text-sm">
+                            <a href="https://tabelog.com/chiba/A1203/A120302/12000422/" target="_blank" class="text-zinc-400 hover:text-zinc-900 dark:hover:text-white font-semibold">Tabelog ↗</a>
+                            <a href="https://maps.app.goo.gl/XAKoQoZRnbLUuF9h9" target="_blank" class="inline-flex items-center space-x-1 text-zinc-900 dark:text-white hover:underline font-bold">
+                                <span>Map</span>
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            </a>
+                        </div>
+                        <a href="https://omakase.in/r/wl555600" target="_blank" class="block w-full text-center py-2 bg-zinc-900 dark:bg-white text-brand-light dark:text-brand-dark rounded-xl text-sm font-bold hover:opacity-90 transition-all">
+                            Book on OMAKASE ↗
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 3. Ramen: RAMEN MATSUI -->
+                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 restaurant-card card-item" data-category="ramen" data-search="ramen matsui raman ramen shinjuku 3.83 tablecheck booking maps">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <span class="text-xs tracking-wider uppercase font-bold text-zinc-400 font-mono">Ramen</span>
+                            <span class="px-2.5 py-1 text-xs font-extrabold bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded">Tabelog: 3.83 ★</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-zinc-900 dark:text-white mt-4 font-serif">RAMEN MATSUI</h4>
+                        <p class="text-sm text-zinc-500 mt-2">Elegant, clear broth ramen served with hyper-precise presentation and balance.</p>
+                    </div>
+                    <div class="pt-4 mt-6 border-t border-zinc-100 dark:border-zinc-800 flex flex-col space-y-2.5">
+                        <div class="flex justify-between items-center text-sm">
+                            <a href="https://tabelog.com/tokyo/A1304/A130402/13285098/" target="_blank" class="text-zinc-400 hover:text-zinc-900 dark:hover:text-white font-semibold">Tabelog ↗</a>
+                            <a href="https://maps.app.goo.gl/eAayEV9dsENtdSLEA" target="_blank" class="inline-flex items-center space-x-1 text-zinc-900 dark:text-white hover:underline font-bold">
+                                <span>Map</span>
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            </a>
+                        </div>
+                        <a href="https://www.tablecheck.com/shops/ramen-matsui/reserve" target="_blank" class="block w-full text-center py-2 bg-zinc-900 dark:bg-white text-brand-light dark:text-brand-dark rounded-xl text-sm font-bold hover:opacity-90 transition-all">
+                            Book on TableCheck ↗
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 4. Ramen: 麵屋周鄉 -->
+                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 restaurant-card card-item" data-category="ramen" data-search="麵屋周鄉 shugo raman ramen 3.77 ginza walk-in booking maps">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <span class="text-xs tracking-wider uppercase font-bold text-zinc-400 font-mono">Ramen</span>
+                            <span class="px-2.5 py-1 text-xs font-extrabold bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded">Tabelog: 3.77 ★</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-zinc-900 dark:text-white mt-4 font-serif">麵屋周鄉</h4>
+                        <p class="text-sm text-zinc-500 mt-2">Renowned for deeply layered, satisfying tsukemen styles in central Ginza.</p>
+                    </div>
+                    <div class="pt-4 mt-6 border-t border-zinc-100 dark:border-zinc-800 flex flex-col space-y-2.5">
+                        <div class="flex justify-between items-center text-sm">
+                            <a href="https://tabelog.com/tokyo/A1301/A130103/13260478/" target="_blank" class="text-zinc-400 hover:text-zinc-900 dark:hover:text-white font-semibold">Tabelog ↗</a>
+                            <a href="https://maps.app.goo.gl/BNbuuuHh5nc5SEzWA" target="_blank" class="inline-flex items-center space-x-1 text-zinc-900 dark:text-white hover:underline font-bold">
+                                <span>Map</span>
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            </a>
+                        </div>
+                        <button disabled class="block w-full text-center py-2 bg-zinc-100 dark:bg-zinc-800/60 text-zinc-400 dark:text-zinc-550 rounded-xl text-sm font-semibold cursor-not-allowed">
+                            No Online Booking (Queue Only)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 5. Steak: NASQUILLO（ナスキロ） -->
+                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 restaurant-card card-item" data-category="steak" data-search="nasquillo ナスキロ steak beef meat shinjuku 3.77 instagram ig booking maps">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <span class="text-xs tracking-wider uppercase font-bold text-zinc-400 font-mono">Steak</span>
+                            <span class="px-2.5 py-1 text-xs font-extrabold bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded">Tabelog: 3.77 ★</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-zinc-900 dark:text-white mt-4 font-serif">NASQUILLO（ナスキロ）</h4>
+                        <p class="text-sm text-zinc-500 mt-2">Charcoal-grilled luxury cuts cooked under precise timing inside Shinjuku Gyoen.</p>
+                    </div>
+                    <div class="pt-4 mt-6 border-t border-zinc-100 dark:border-zinc-800 flex flex-col space-y-2.5">
+                        <div class="flex justify-between items-center text-sm">
+                            <a href="https://tabelog.com/tokyo/A1304/A130402/13263017/" target="_blank" class="text-zinc-400 hover:text-zinc-900 dark:hover:text-white font-semibold">Tabelog ↗</a>
+                            <a href="https://maps.app.goo.gl/BNbuuuHh5nc5SEzWA" target="_blank" class="inline-flex items-center space-x-1 text-zinc-900 dark:text-white hover:underline font-bold">
+                                <span>Map</span>
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            </a>
+                        </div>
+                        <a href="https://www.instagram.com/nasquillo_shinjukugyoen/" target="_blank" class="block w-full text-center py-2 bg-indigo-650 hover:bg-indigo-700 text-white rounded-xl text-sm font-bold transition-all">
+                            Book Via Instagram (Direct) ↗
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 6. BBQ: Sato -->
+                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 restaurant-card card-item" data-category="bbq" data-search="sato satoburian yakiniku wagyu bbq 3.89 tablecheck login maps">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <span class="text-xs tracking-wider uppercase font-bold text-zinc-400 font-mono">BBQ</span>
+                            <span class="px-2.5 py-1 text-xs font-extrabold bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded">Tabelog: 3.89 ★</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-zinc-900 dark:text-white mt-4 font-serif">Sato (Satoburian)</h4>
+                        <p class="text-sm text-zinc-500 mt-2">Legendary, award-winning Chateaubriand specialized yakiniku.</p>
+                    </div>
+                    <div class="pt-4 mt-6 border-t border-zinc-100 dark:border-zinc-800 flex flex-col space-y-2.5">
+                        <div class="flex justify-between items-center text-sm">
+                            <a href="https://tabelog.com/tw/tokyo/A1319/A131905/13159782/" target="_blank" class="text-zinc-400 hover:text-zinc-900 dark:hover:text-white font-semibold">Tabelog ↗</a>
+                            <a href="https://maps.app.goo.gl/UpDQ5WMf66cTNmZS8" target="_blank" class="inline-flex items-center space-x-1 text-zinc-900 dark:text-white hover:underline font-bold">
+                                <span>Map</span>
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            </a>
+                        </div>
+                        <a href="https://www.tablecheck.com/zh-TW/shops/satoburian-2gou/reserve/login_required" target="_blank" class="block w-full text-center py-2 bg-zinc-900 dark:bg-white text-brand-light dark:text-brand-dark rounded-xl text-sm font-bold hover:opacity-90 transition-all">
+                            Book on TableCheck (Login Req.) ↗
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 7. BBQ: Innocent Carvery -->
+                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 restaurant-card card-item" data-category="bbq" data-search="innocent carvery yakiniku bbq 3.90 tablecheck roppongi maps">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <span class="text-xs tracking-wider uppercase font-bold text-zinc-400 font-mono">BBQ</span>
+                            <span class="px-2.5 py-1 text-xs font-extrabold bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded">Tabelog: 3.90 ★</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-zinc-900 dark:text-white mt-4 font-serif">Innocent Carvery</h4>
+                        <p class="text-sm text-zinc-500 mt-2">Sophisticated Wagyu gallery with incredible, tender cuts grilled at the table counter.</p>
+                    </div>
+                    <div class="pt-4 mt-6 border-t border-zinc-100 dark:border-zinc-800 flex flex-col space-y-2.5">
+                        <div class="flex justify-between items-center text-sm">
+                            <a href="https://tabelog.com/tokyo/A1307/A130701/13189539/" target="_blank" class="text-zinc-400 hover:text-zinc-900 dark:hover:text-white font-semibold">Tabelog ↗</a>
+                            <a href="https://maps.app.goo.gl/LhKh5skEebhbYTBHA" target="_blank" class="inline-flex items-center space-x-1 text-zinc-900 dark:text-white hover:underline font-bold">
+                                <span>Map</span>
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            </a>
+                        </div>
+                        <a href="https://www.tablecheck.com/en/shops/innocent-carvery/reserve" target="_blank" class="block w-full text-center py-2 bg-zinc-900 dark:bg-white text-brand-light dark:text-brand-dark rounded-xl text-sm font-bold hover:opacity-90 transition-all">
+                            Book on TableCheck ↗
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 8. Sushi (Placeholder State) -->
+                <div class="bg-zinc-50 dark:bg-zinc-900/10 border border-dashed border-zinc-300 dark:border-zinc-800 p-6 rounded-2xl flex flex-col justify-between restaurant-card card-item" data-category="sushi" data-search="sushi empty list placeholders">
+                    <div class="text-center py-12">
+                        <div class="w-12 h-12 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-full flex items-center justify-center mx-auto mb-4">
+                            🍣
+                        </div>
+                        <h4 class="text-lg font-bold text-zinc-800 dark:text-zinc-200">Sushi Spot Recommendations</h4>
+                        <p class="text-xs text-zinc-400 mt-2 max-w-xs mx-auto">Future premium sushi checkpoints can be added right here.</p>
+                    </div>
+                </div>
+
+                <!-- 9. Others (Placeholder State) -->
+                <div class="bg-zinc-50 dark:bg-zinc-900/10 border border-dashed border-zinc-300 dark:border-zinc-800 p-6 rounded-2xl flex flex-col justify-between restaurant-card card-item" data-category="others" data-search="others empty list placeholders">
+                    <div class="text-center py-12">
+                        <div class="w-12 h-12 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-full flex items-center justify-center mx-auto mb-4">
+                            🍽️
+                        </div>
+                        <h4 class="text-lg font-bold text-zinc-800 dark:text-zinc-200">Others Curation List</h4>
+                        <p class="text-xs text-zinc-400 mt-2 max-w-xs mx-auto">Miscellaneous dining entries and cafes can be added directly here.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
         <!-- ================= SHOPS TAB ================= -->
         <div id="content-shops" class="tab-content hidden space-y-10 animate-fadeIn">
-            <!-- STREAMING_CHUNK: Filtering options and building Shinjuku layouts... -->
             <!-- Filter Options for Shops -->
             <div class="flex flex-wrap items-center gap-3 pb-6 border-b border-zinc-200/50 dark:border-zinc-800/50">
                 <button onclick="filterArea('all')" id="area-all" class="area-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-900 dark:bg-white text-brand-light dark:text-brand-dark focus:outline-none">
@@ -1503,7 +1725,7 @@
                     <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="uniqlo sizes shirt pants xl l">
                         <div>
                             <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-3">Uniqlo</h3>
-                            <div class="overflow-x-auto border border-zinc-150 dark:border-zinc-800 rounded-xl">
+                            <div class="overflow-x-auto border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="uniqlo sizes shirt pants xl l">
                                 <table class="w-full text-left border-collapse">
                                     <thead>
                                         <tr class="bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 text-xs font-bold uppercase text-zinc-400">
@@ -1595,7 +1817,7 @@
                                         <!-- Styled Purple Logo Integration -->
                                         <div class="flex items-center space-x-1 mt-2.5 z-10 px-1 bg-brand-light dark:bg-zinc-900 rounded">
                                             <svg class="w-4 h-4 text-purple-600 dark:text-purple-400" fill="currentColor" viewBox="0 0 24 24">
-                                                <path d="M21.5 11.5l-8.5-7.5h-2.5l5.5 7.5h-10 l-3.5-3.5h-2l1.5 3.5v1l-1.5 3.5h2l3.5-3.5h10l-5.5 7.5h2.5l8.5-7.5z"/>
+                                                <path d="M21.5 11.5l-8.5-7.5h-2.5l5.5 7.5h-10l-3.5-3.5h-2l1.5 3.5v1l-1.5 3.5h2l3.5-3.5h10l-5.5 7.5h2.5l8.5-7.5z"/>
                                             </svg>
                                             <span class="text-[11px] sm:text-xs text-purple-600 dark:text-purple-400 tracking-wider font-mono font-bold">HK Express</span>
                                         </div>
@@ -1863,6 +2085,31 @@
             });
         }
 
+        // Restaurant Filtering by Category
+        function filterRestaurant(categoryName) {
+            // Update Button Styling
+            const buttons = document.querySelectorAll('.res-btn');
+            buttons.forEach(btn => {
+                btn.className = "res-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200/50 focus:outline-none";
+            });
+
+            const activeBtn = document.getElementById(`res-${categoryName}`);
+            if (activeBtn) {
+                activeBtn.className = "res-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-900 dark:bg-white text-brand-light dark:text-brand-dark focus:outline-none";
+            }
+
+            // Filter Grid Items
+            const resCards = document.querySelectorAll('.restaurant-card');
+            resCards.forEach(card => {
+                const itemCategory = card.getAttribute('data-category');
+                if (categoryName === 'all' || itemCategory === categoryName) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
         // Real-time Global Cross-Tab Search Filter
         function filterItems(query) {
             const cleanQuery = query.toLowerCase().trim();
@@ -1888,6 +2135,16 @@
                         } else {
                             card.style.display = 'none';
                         }
+                    } else if (card.classList.contains('restaurant-card')) {
+                        // Respect active Category filters when search is empty
+                        const activeResBtn = document.querySelector('.res-btn.bg-zinc-900, .res-btn.dark\\:bg-white');
+                        const activeCategory = activeResBtn ? activeResBtn.id.replace('res-', '') : 'all';
+                        const itemCategory = card.getAttribute('data-category');
+                        if (activeCategory === 'all' || itemCategory === activeCategory) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
                     } else {
                         card.style.display = '';
                     }
@@ -1909,7 +2166,7 @@
 
                 if (searchableText.includes(cleanQuery)) {
                     card.classList.remove('opacity-20');
-                    if (card.classList.contains('shop-card')) {
+                    if (card.classList.contains('shop-card') || card.classList.contains('restaurant-card')) {
                         card.style.display = 'flex';
                     } else {
                         card.style.display = '';
