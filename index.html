@@ -60,14 +60,16 @@
         .animate-pulse-fast {
             animation: pulse-fast 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
 </head>
 <body class="bg-brand-light dark:bg-brand-dark text-zinc-900 dark:text-zinc-100 min-h-screen font-sans flex flex-col selection:bg-zinc-200 dark:selection:bg-zinc-800 transition-colors duration-300">
 
-
     <!-- Top Minimal Header / Navigation Bar -->
     <header class="sticky top-0 z-40 backdrop-blur-md bg-brand-light/80 dark:bg-brand-dark/80 border-b border-zinc-200/50 dark:border-zinc-800/50 transition-colors duration-300">
-        <div class="max-w-5xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between gap-4">
+        <div class="max-w-5xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between">
             <div class="flex items-center space-x-3.5">
                 <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
                 <span class="text-sm uppercase tracking-widest font-semibold text-zinc-400">Live Tokyo Trip</span>
@@ -82,7 +84,6 @@
                     </svg>
                     <div class="flex flex-col">
                         <span class="font-mono font-bold tracking-tight text-zinc-700 dark:text-zinc-300">Min 22° / Max 30°</span>
-                        <!-- Enformed Outstanding Weather Link -->
                         <a href="https://tenki.jp/week/3/16/" target="_blank" class="mt-0.5 text-[11px] bg-amber-500/10 dark:bg-amber-400/10 text-amber-600 dark:text-amber-400 hover:bg-amber-500/20 px-2 py-0.5 rounded-md font-extrabold tracking-wider transition-all hover:underline text-center">
                             Weather FCST ↗
                         </a>
@@ -98,7 +99,6 @@
             </div>
         </div>
     </header>
-
 
     <!-- Main Dynamic Banner -->
     <section class="max-w-5xl mx-auto px-5 sm:px-8 pt-10 pb-6 w-full">
@@ -133,12 +133,20 @@
                 </button>
             </div>
             
-            <!-- Global Search Filter for Active Lists -->
+            <!-- Global Search Filter for Active Lists (Visible on Desktop) -->
             <div class="relative hidden md:block w-56">
                 <input type="text" id="searchInput" oninput="filterItems(this.value)" placeholder="Quick search..." class="w-full text-sm py-2 pl-9 pr-4 bg-zinc-100 dark:bg-zinc-900 border-none rounded-xl focus:ring-1 focus:ring-zinc-400 dark:focus:ring-zinc-600 focus:outline-none text-zinc-800 dark:text-zinc-200">
                 <div class="absolute left-3 top-3 text-zinc-400">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                 </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Search Bar -->
+        <div class="relative block md:hidden mt-3">
+            <input type="text" id="searchInputMobile" oninput="filterItems(this.value)" placeholder="Quick search..." class="w-full text-sm py-2 pl-9 pr-4 bg-zinc-100 dark:bg-zinc-900 border-none rounded-xl focus:ring-1 focus:ring-zinc-400 dark:focus:ring-zinc-600 focus:outline-none text-zinc-800 dark:text-zinc-200">
+            <div class="absolute left-3 top-3 text-zinc-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
             </div>
         </div>
     </nav>
@@ -161,7 +169,7 @@
                     <div class="relative border-l-2 border-zinc-200 dark:border-zinc-800 pl-8 ml-4 space-y-10">
                         
                         <!-- Event 1: Hair Cut -->
-                        <div class="relative group card-item" data-search="hair cut peek-a-boo aveda atre ebisu salon 28/6">
+                        <div class="relative group card-item" data-search="hair cut peek-a-boo aveda atre ebisu salon lifestyle 28/6">
                             <div class="absolute -left-[42px] top-1.5 w-6 h-6 rounded-full border-4 border-brand-light dark:border-brand-dark bg-zinc-900 dark:bg-white flex items-center justify-center transition-all group-hover:scale-110"></div>
                             
                             <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
@@ -181,7 +189,7 @@
                                 <div class="flex justify-between items-center pt-4 border-t border-zinc-100 dark:border-zinc-800">
                                     <span class="text-sm text-zinc-400 font-medium">Atre Ebisu location</span>
                                     <a href="https://maps.app.goo.gl/3AbB6ZWCgTrrpnV97" target="_blank" class="inline-flex items-center space-x-1.5 text-sm text-zinc-900 dark:text-white hover:underline font-semibold">
-                                        <span>Google Maps</span>
+                                        <span>Map</span>
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                                     </a>
                                 </div>
@@ -189,7 +197,7 @@
                         </div>
 
                         <!-- Event 2: Dining (Kino_) -->
-                        <div class="relative group card-item" data-search="dining lunch kino_ restaurant 28/6">
+                        <div class="relative group card-item" data-search="dining lunch kino_ restaurant dining 28/6">
                             <div class="absolute -left-[42px] top-1.5 w-6 h-6 rounded-full border-4 border-brand-light dark:border-brand-dark bg-zinc-900 dark:bg-white flex items-center justify-center transition-all group-hover:scale-110"></div>
                             
                             <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
@@ -209,7 +217,7 @@
                                 <div class="flex justify-between items-center pt-4 border-t border-zinc-100 dark:border-zinc-800">
                                     <span class="text-sm text-zinc-400 font-medium">Fine Dining</span>
                                     <a href="https://maps.app.goo.gl/D5LrpLnNaMoaTW2NA" target="_blank" class="inline-flex items-center space-x-1.5 text-sm text-zinc-900 dark:text-white hover:underline font-semibold">
-                                        <span>Google Maps</span>
+                                        <span>Map</span>
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                                     </a>
                                 </div>
@@ -217,7 +225,7 @@
                         </div>
 
                         <!-- Event 3: Expo (Grand Van Gogh) -->
-                        <div class="relative group card-item" data-search="expo exhibition museum grand van gogh art 30/6">
+                        <div class="relative group card-item" data-search="expo exhibition museum grand van gogh art exhibition 30/6">
                             <div class="absolute -left-[42px] top-1.5 w-6 h-6 rounded-full border-4 border-brand-light dark:border-brand-dark bg-zinc-900 dark:bg-white flex items-center justify-center transition-all group-hover:scale-110"></div>
                             
                             <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
@@ -237,7 +245,7 @@
                                 <div class="flex justify-between items-center pt-4 border-t border-zinc-100 dark:border-zinc-800">
                                     <span class="text-sm text-zinc-400 font-medium">Art and Culture</span>
                                     <a href="https://maps.app.goo.gl/WaUJhJs78yGB6YHK9" target="_blank" class="inline-flex items-center space-x-1.5 text-sm text-zinc-900 dark:text-white hover:underline font-semibold">
-                                        <span>Google Maps</span>
+                                        <span>Map</span>
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                                     </a>
                                 </div>
@@ -245,7 +253,7 @@
                         </div>
 
                         <!-- Event 4: Dining (LA BETTOLA da Ochiai) -->
-                        <div class="relative group card-item" data-search="dining lunch la bettola da ochiai italian restaurant 30/6">
+                        <div class="relative group card-item" data-search="dining lunch la bettola da ochiai italian restaurant dining 30/6">
                             <div class="absolute -left-[42px] top-1.5 w-6 h-6 rounded-full border-4 border-brand-light dark:border-brand-dark bg-zinc-900 dark:bg-white flex items-center justify-center transition-all group-hover:scale-110"></div>
                             
                             <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
@@ -265,7 +273,7 @@
                                 <div class="flex justify-between items-center pt-4 border-t border-zinc-100 dark:border-zinc-800">
                                     <span class="text-sm text-zinc-400 font-medium">Italian Fine Dining</span>
                                     <a href="https://maps.app.goo.gl/vmvMwMzv9WLRttzV9" target="_blank" class="inline-flex items-center space-x-1.5 text-sm text-zinc-900 dark:text-white hover:underline font-semibold">
-                                        <span>Google Maps</span>
+                                        <span>Map</span>
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                                     </a>
                                 </div>
@@ -310,14 +318,13 @@
             <div class="max-w-3xl mx-auto space-y-8">
                 <div class="flex items-center justify-between">
                     <h2 class="text-xl font-bold tracking-tight text-zinc-800 dark:text-zinc-200 font-serif">Lodging Timeline</h2>
-                    <span class="text-sm text-zinc-400 font-mono">2 Base Camps</span>
+                    <span class="text-sm text-zinc-400">2 Base Camps</span>
                 </div>
-
 
                 <!-- Hotel Timeline Grid -->
                 <div class="space-y-8">
                     <!-- Hotel 1 -->
-                    <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 rounded-2xl p-8 transition-all hover:shadow-md card-item" data-search="vessel inn takadanobaba station hotel lodging 28/6 1/7 nike pants snidel clothing shoes">
+                    <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 rounded-2xl p-8 transition-all hover:shadow-md card-item" data-search="vessel inn takadanobaba station hotel lodging 28/6 1/7 nike pants snidel clothing shoes collect">
                         <div class="flex flex-col sm:flex-row justify-between sm:items-start gap-6 mb-6">
                             <div>
                                 <div class="flex items-center space-x-3">
@@ -332,23 +339,23 @@
                             </div>
                         </div>
 
-                        <!-- TO BE COLLECTED - Vessel Inn section -->
+                        <!-- TO BE COLLECTED Checklist -->
                         <div class="mb-6 p-5 bg-zinc-50 dark:bg-zinc-900/80 rounded-xl border border-zinc-200/50 dark:border-zinc-800/80">
                             <h4 class="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-3.5 flex items-center">
-                                <span class="w-2.5 h-2.5 rounded-full bg-amber-500 mr-2"></span>To Be Collected
+                                <span class="w-2.5 h-2.5 rounded-full bg-amber-500 mr-2 animate-pulse"></span>To Be Collected
                             </h4>
                             <div class="space-y-3">
                                 <label class="flex items-start space-x-3 cursor-pointer text-sm font-medium">
-                                    <input type="checkbox" id="vessel_collect_nike" onchange="saveCheckboxState(this.id)" class="mt-0.5 w-4 h-4 rounded border-zinc-300 text-zinc-900 focus:ring-zinc-400 dark:bg-zinc-850 dark:border-zinc-700">
-                                    <span class="text-zinc-700 dark:text-zinc-300 selection-task">Nike pants <span class="text-xs text-zinc-400 font-normal">(26 Jun)</span></span>
+                                    <input type="checkbox" id="v_collect_nike" onchange="saveCheckboxState(this.id)" class="mt-0.5 w-4 h-4 rounded border-zinc-300 text-zinc-900 focus:ring-zinc-400 dark:bg-zinc-850 dark:border-zinc-700">
+                                    <span class="text-zinc-700 dark:text-zinc-300">Nike pants <span class="text-xs text-zinc-400 font-normal">(26 Jun)</span></span>
                                 </label>
                                 <label class="flex items-start space-x-3 cursor-pointer text-sm font-medium">
-                                    <input type="checkbox" id="vessel_collect_snidel" onchange="saveCheckboxState(this.id)" class="mt-0.5 w-4 h-4 rounded border-zinc-300 text-zinc-900 focus:ring-zinc-400 dark:bg-zinc-850 dark:border-zinc-700">
-                                    <span class="text-zinc-700 dark:text-zinc-300 selection-task">Snidel clothing <span class="text-xs text-zinc-400 font-normal">(27 Jun)</span></span>
+                                    <input type="checkbox" id="v_collect_snidel" onchange="saveCheckboxState(this.id)" class="mt-0.5 w-4 h-4 rounded border-zinc-300 text-zinc-900 focus:ring-zinc-400 dark:bg-zinc-850 dark:border-zinc-700">
+                                    <span class="text-zinc-700 dark:text-zinc-300">Snidel clothing <span class="text-xs text-zinc-400 font-normal">(27 Jun)</span></span>
                                 </label>
                                 <label class="flex items-start space-x-3 cursor-pointer text-sm font-medium">
-                                    <input type="checkbox" id="vessel_collect_shoes" onchange="saveCheckboxState(this.id)" class="mt-0.5 w-4 h-4 rounded border-zinc-300 text-zinc-900 focus:ring-zinc-400 dark:bg-zinc-850 dark:border-zinc-700">
-                                    <span class="text-zinc-700 dark:text-zinc-300 selection-task">Shoes <span class="text-xs text-zinc-400 font-normal">(28 Jun)</span></span>
+                                    <input type="checkbox" id="v_collect_shoes" onchange="saveCheckboxState(this.id)" class="mt-0.5 w-4 h-4 rounded border-zinc-300 text-zinc-900 focus:ring-zinc-400 dark:bg-zinc-850 dark:border-zinc-700">
+                                    <span class="text-zinc-700 dark:text-zinc-300">Shoes <span class="text-xs text-zinc-400 font-normal">(28 Jun)</span></span>
                                 </label>
                             </div>
                         </div>
@@ -359,14 +366,14 @@
                                 <span>Ideal access to Yamanote Line</span>
                             </div>
                             <a href="https://maps.app.goo.gl/gGctGioLEn4MoW2v6" target="_blank" class="inline-flex items-center space-x-2 text-sm text-zinc-900 dark:text-white hover:underline font-bold">
-                                <span>Map Link</span>
+                                <span>Map</span>
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                             </a>
                         </div>
                     </div>
 
                     <!-- Hotel 2 -->
-                    <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 rounded-2xl p-8 transition-all hover:shadow-md card-item" data-search="apa hotel keisei narita ekimae lodging 1/7 2/7 coffee drip bag">
+                    <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 rounded-2xl p-8 transition-all hover:shadow-md card-item" data-search="apa hotel keisei narita ekimae lodging 1/7 2/7 coffee drip bag collect">
                         <div class="flex flex-col sm:flex-row justify-between sm:items-start gap-6 mb-6">
                             <div>
                                 <div class="flex items-center space-x-3">
@@ -381,15 +388,15 @@
                             </div>
                         </div>
 
-                        <!-- TO BE COLLECTED - APA Hotel section -->
+                        <!-- TO BE COLLECTED Checklist -->
                         <div class="mb-6 p-5 bg-zinc-50 dark:bg-zinc-900/80 rounded-xl border border-zinc-200/50 dark:border-zinc-800/80">
                             <h4 class="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-3.5 flex items-center">
-                                <span class="w-2.5 h-2.5 rounded-full bg-indigo-500 mr-2"></span>To Be Collected
+                                <span class="w-2.5 h-2.5 rounded-full bg-indigo-500 mr-2 animate-pulse"></span>To Be Collected
                             </h4>
                             <div class="space-y-3">
                                 <label class="flex items-start space-x-3 cursor-pointer text-sm font-medium">
-                                    <input type="checkbox" id="apa_collect_coffee" onchange="saveCheckboxState(this.id)" class="mt-0.5 w-4 h-4 rounded border-zinc-300 text-zinc-900 focus:ring-zinc-400 dark:bg-zinc-850 dark:border-zinc-700">
-                                    <span class="text-zinc-700 dark:text-zinc-300 selection-task">Coffee drip bag 48pcs <span class="text-xs text-zinc-400 font-normal">(1 Jul)</span></span>
+                                    <input type="checkbox" id="v_collect_coffee" onchange="saveCheckboxState(this.id)" class="mt-0.5 w-4 h-4 rounded border-zinc-300 text-zinc-900 focus:ring-zinc-400 dark:bg-zinc-850 dark:border-zinc-700">
+                                    <span class="text-zinc-700 dark:text-zinc-300">Coffee drip bag 48pcs <span class="text-xs text-zinc-400 font-normal">(1 Jul)</span></span>
                                 </label>
                             </div>
                         </div>
@@ -400,7 +407,7 @@
                                 <span>Perfect for morning departures from NRT</span>
                             </div>
                             <a href="https://maps.app.goo.gl/HLfLwNTWqWGj5fUv5" target="_blank" class="inline-flex items-center space-x-2 text-sm text-zinc-900 dark:text-white hover:underline font-bold">
-                                <span>Map Link</span>
+                                <span>Map</span>
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                             </a>
                         </div>
@@ -430,21 +437,20 @@
                 </button>
             </div>
 
-
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6" id="shopsGrid">
                 
                 <!-- Combined Shinjuku & Shinjuku Isetan Table Card -->
-                <div class="col-span-1 sm:col-span-2 bg-white dark:bg-zinc-900/40 border border-zinc-250 dark:border-zinc-850 p-6 sm:p-8 rounded-3xl shadow-sm hover:shadow-md transition-all duration-300 shop-card card-item" data-area="新宿" data-search="新宿 新宿伊勢丹 isetan department store main building men building aesop baum goods issey miyake vivienne westwood wacoal sacai auralee the row toga too sales ongoing">
+                <div class="col-span-1 sm:col-span-2 bg-white dark:bg-zinc-900/40 border border-zinc-250 dark:border-zinc-850 p-6 sm:p-8 rounded-3xl shadow-sm hover:shadow-md transition-all duration-300 shop-card card-item" data-area="新宿" data-search="新宿 新宿伊勢丹 isetan department store main building men building aesop baum goods issey miyake vivienne westwood wacoal sacai auralee the row sales ongoing toga too">
                     <div class="flex flex-col md:flex-row justify-between items-start border-b border-zinc-200/60 dark:border-zinc-800/60 pb-6 mb-8 gap-4">
                         <div>
                             <div class="flex flex-wrap items-center gap-3">
                                 <span class="px-3.5 py-1 text-xs uppercase font-extrabold bg-red-600 text-white rounded tracking-widest animate-pulse">SALES ON GOING</span>
-                                <span class="px-3 py-1 text-xs tracking-wider uppercase font-bold bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-355 rounded">SHINJUKU METROPOLIS</span>
+                                <span class="px-3 py-1 text-xs tracking-wider uppercase font-bold bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-350 rounded">SHINJUKU METROPOLIS</span>
                             </div>
                             <h3 class="text-2xl sm:text-3xl font-extrabold text-zinc-900 dark:text-white mt-4">新宿 / 新宿伊勢丹 Checklist</h3>
                         </div>
                         <a href="https://maps.app.goo.gl/yicB7YQFj9XcrQadA" target="_blank" class="inline-flex items-center space-x-1.5 text-sm text-zinc-900 dark:text-white hover:underline font-bold self-start md:self-center">
-                            <span>Google Maps</span>
+                            <span>Map</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                         </a>
                     </div>
@@ -462,79 +468,69 @@
                                 <table class="w-full text-left border-collapse">
                                     <thead>
                                         <tr class="bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 text-xs font-bold uppercase tracking-wider text-zinc-400">
-                                            <th class="py-3 px-4 w-24">Floor</th>
-                                            <th class="py-3 px-4">Brand / Outlet</th>
-                                            <th class="py-3 px-4">Category</th>
+                                            <th class="py-3 px-3 sm:px-4 w-20 sm:w-24">Floor</th>
+                                            <th class="py-3 px-3 sm:px-4">Brand / Outlet</th>
                                         </tr>
                                     </thead>
-                                    <tbody class="divide-y divide-zinc-100 dark:divide-zinc-800/80 text-base">
+                                    <tbody class="divide-y divide-zinc-100 dark:divide-zinc-800/80 text-sm md:text-base">
                                         <!-- 4F -->
                                         <tr class="hover:bg-zinc-50/50 dark:hover:bg-zinc-900/20">
-                                            <td class="py-4 px-4">
+                                            <td class="py-3 px-3 sm:py-4 sm:px-4">
                                                 <span class="inline-flex items-center justify-center px-2.5 py-1 text-xs font-black font-mono tracking-wider bg-zinc-900 dark:bg-zinc-800 text-white rounded-md">4F</span>
                                             </td>
-                                            <td class="py-4 px-4 font-bold text-zinc-850 dark:text-white">Auralee</td>
-                                            <td class="py-4 px-4 text-sm text-zinc-500">Clean High-end Minimalist Tailoring</td>
+                                            <td class="py-3 px-3 sm:py-4 sm:px-4 font-bold text-zinc-850 dark:text-white">Auralee</td>
                                         </tr>
                                         <tr class="hover:bg-zinc-50/50 dark:hover:bg-zinc-900/20">
-                                            <td class="py-4 px-4">
+                                            <td class="py-3 px-3 sm:py-4 sm:px-4">
                                                 <span class="inline-flex items-center justify-center px-2.5 py-1 text-xs font-black font-mono tracking-wider bg-zinc-900 dark:bg-zinc-800 text-white rounded-md">4F</span>
                                             </td>
-                                            <td class="py-4 px-4 font-bold text-zinc-850 dark:text-white">The Row</td>
-                                            <td class="py-4 px-4 text-sm text-zinc-500">Luxury Handbags & Apparel</td>
+                                            <td class="py-3 px-3 sm:py-4 sm:px-4 font-bold text-zinc-850 dark:text-white">The Row</td>
                                         </tr>
                                         <!-- 3F -->
                                         <tr class="hover:bg-zinc-50/50 dark:hover:bg-zinc-900/20">
-                                            <td class="py-4 px-4">
+                                            <td class="py-3 px-3 sm:py-4 sm:px-4">
                                                 <span class="inline-flex items-center justify-center px-2.5 py-1 text-xs font-black font-mono tracking-wider bg-zinc-900 dark:bg-zinc-800 text-white rounded-md">3F</span>
                                             </td>
-                                            <td class="py-4 px-4 font-bold text-zinc-850 dark:text-white font-serif italic">Toga Too</td>
-                                            <td class="py-4 px-4 text-sm text-zinc-500">Avant-Garde Footwear & Accessories</td>
+                                            <td class="py-3 px-3 sm:py-4 sm:px-4 font-bold text-zinc-850 dark:text-white font-serif italic">Toga Too</td>
                                         </tr>
                                         <tr class="hover:bg-zinc-50/50 dark:hover:bg-zinc-900/20">
-                                            <td class="py-4 px-4">
+                                            <td class="py-3 px-3 sm:py-4 sm:px-4">
                                                 <span class="inline-flex items-center justify-center px-2.5 py-1 text-xs font-black font-mono tracking-wider bg-zinc-900 dark:bg-zinc-800 text-white rounded-md">3F</span>
                                             </td>
-                                            <td class="py-4 px-4 font-bold text-zinc-850 dark:text-white">Wacoal</td>
-                                            <td class="py-4 px-4 text-sm text-zinc-500">Premium Intimates & Underwear</td>
+                                            <td class="py-3 px-3 sm:py-4 sm:px-4 font-bold text-zinc-850 dark:text-white">Wacoal</td>
                                         </tr>
                                         <tr class="hover:bg-zinc-50/50 dark:hover:bg-zinc-900/20">
-                                            <td class="py-4 px-4">
+                                            <td class="py-3 px-3 sm:py-4 sm:px-4">
                                                 <span class="inline-flex items-center justify-center px-2.5 py-1 text-xs font-black font-mono tracking-wider bg-zinc-900 dark:bg-zinc-800 text-white rounded-md">3F</span>
                                             </td>
-                                            <td class="py-4 px-4 font-bold text-zinc-850 dark:text-white">Sacai</td>
-                                            <td class="py-4 px-4 text-sm text-zinc-500">Bespoke Avant-Garde Womenswear</td>
+                                            <td class="py-3 px-3 sm:py-4 sm:px-4 font-bold text-zinc-850 dark:text-white">Sacai</td>
                                         </tr>
                                         <!-- 2F -->
                                         <tr class="hover:bg-zinc-50/50 dark:hover:bg-zinc-900/20">
-                                            <td class="py-4 px-4">
+                                            <td class="py-3 px-3 sm:py-4 sm:px-4">
                                                 <span class="inline-flex items-center justify-center px-2.5 py-1 text-xs font-black font-mono tracking-wider bg-zinc-900 dark:bg-zinc-800 text-white rounded-md">2F</span>
                                             </td>
-                                            <td class="py-4 px-4 font-bold text-zinc-850 dark:text-white">Vivienne Westwood Red Label</td>
-                                            <td class="py-4 px-4 text-sm text-zinc-500">Womenswear / Punk Elegance</td>
+                                            <td class="py-3 px-3 sm:py-4 sm:px-4 font-bold text-zinc-850 dark:text-white">Vivienne Westwood Red Label</td>
                                         </tr>
                                         <!-- 1F -->
                                         <tr class="hover:bg-zinc-50/50 dark:hover:bg-zinc-900/20">
-                                            <td class="py-4 px-4">
+                                            <td class="py-3 px-3 sm:py-4 sm:px-4">
                                                 <span class="inline-flex items-center justify-center px-2.5 py-1 text-xs font-black font-mono tracking-wider bg-zinc-900 dark:bg-zinc-800 text-white rounded-md">1F</span>
                                             </td>
-                                            <td class="py-4 px-4 font-bold text-zinc-850 dark:text-white">GOODS GOODS Issey Miyake</td>
-                                            <td class="py-4 px-4 text-sm text-zinc-500">Conceptual Accessories & Bags</td>
+                                            <td class="py-3 px-3 sm:py-4 sm:px-4 font-bold text-zinc-850 dark:text-white">GOODS GOODS Issey Miyake</td>
                                         </tr>
                                         <!-- B2F -->
                                         <tr class="hover:bg-zinc-50/50 dark:hover:bg-zinc-900/20">
-                                            <td class="py-4 px-4">
+                                            <td class="py-3 px-3 sm:py-4 sm:px-4">
                                                 <span class="inline-flex items-center justify-center px-2.5 py-1 text-xs font-black font-mono tracking-wider bg-zinc-900 dark:bg-zinc-800 text-white rounded-md">B2F</span>
                                             </td>
-                                            <td class="py-4 px-4 font-bold text-zinc-850 dark:text-white">Aesop</td>
-                                            <td class="py-4 px-4 text-sm text-zinc-500">Cosmetics / Botanical Skincare</td>
+                                            <td class="py-3 px-3 sm:py-4 sm:px-4 font-bold text-zinc-850 dark:text-white">Aesop</td>
                                         </tr>
                                         <tr class="hover:bg-zinc-50/50 dark:hover:bg-zinc-900/20">
-                                            <td class="py-4 px-4">
+                                            <td class="py-3 px-3 sm:py-4 sm:px-4">
                                                 <span class="inline-flex items-center justify-center px-2.5 py-1 text-xs font-black font-mono tracking-wider bg-zinc-900 dark:bg-zinc-800 text-white rounded-md">B2F</span>
                                             </td>
-                                            <td class="py-4 px-4 font-bold text-zinc-850 dark:text-white">BAUM</td>
-                                            <td class="py-4 px-4 text-sm text-zinc-500">Aromatherapy / Forest Beauty</td>
+                                            <td class="py-3 px-3 sm:py-4 sm:px-4 font-bold text-zinc-850 dark:text-white">BAUM</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -551,27 +547,24 @@
                                 <table class="w-full text-left border-collapse">
                                     <thead>
                                         <tr class="bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 text-xs font-bold uppercase tracking-wider text-zinc-400">
-                                            <th class="py-3 px-4 w-24">Floor</th>
-                                            <th class="py-3 px-4">Brand / Outlet</th>
-                                            <th class="py-3 px-4">Category</th>
+                                            <th class="py-3 px-3 sm:px-4 w-20 sm:w-24">Floor</th>
+                                            <th class="py-3 px-3 sm:px-4">Brand / Outlet</th>
                                         </tr>
                                     </thead>
-                                    <tbody class="divide-y divide-zinc-100 dark:divide-zinc-800/80 text-base">
+                                    <tbody class="divide-y divide-zinc-100 dark:divide-zinc-800/80 text-sm md:text-base">
                                         <!-- 6F -->
                                         <tr class="hover:bg-zinc-50/50 dark:hover:bg-zinc-900/20">
-                                            <td class="py-4 px-4">
+                                            <td class="py-3 px-3 sm:py-4 sm:px-4">
                                                 <span class="inline-flex items-center justify-center px-2.5 py-1 text-xs font-black font-mono tracking-wider bg-zinc-900 dark:bg-zinc-800 text-white rounded-md animate-pulse">6F</span>
                                             </td>
-                                            <td class="py-4 px-4 font-bold text-zinc-850 dark:text-white">Multiple Designer Brands</td>
-                                            <td class="py-4 px-4 text-sm text-zinc-500">Special Designer Apparel Outlet</td>
+                                            <td class="py-3 px-3 sm:py-4 sm:px-4 font-bold text-zinc-850 dark:text-white">Multiple Designer Brands</td>
                                         </tr>
                                         <!-- 3F -->
                                         <tr class="hover:bg-zinc-50/50 dark:hover:bg-zinc-900/20">
-                                            <td class="py-4 px-4">
+                                            <td class="py-3 px-3 sm:py-4 sm:px-4">
                                                 <span class="inline-flex items-center justify-center px-2.5 py-1 text-xs font-black font-mono tracking-wider bg-zinc-900 dark:bg-zinc-800 text-white rounded-md">3F</span>
                                             </td>
-                                            <td class="py-4 px-4 font-bold text-zinc-850 dark:text-white">Sacai Men's</td>
-                                            <td class="py-4 px-4 text-sm text-zinc-500">Curated Men's Hybrid Runway Line</td>
+                                            <td class="py-3 px-3 sm:py-4 sm:px-4 font-bold text-zinc-850 dark:text-white">Sacai Men's</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -581,156 +574,175 @@
                     </div>
                 </div>
 
-                <!-- Shop: Auralee (南青山) -->
-                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 shop-card card-item" data-area="南青山" data-search="auralee apparel design minami aoyama 南青山">
+                <!-- Shop: COMOLI (南青山) -->
+                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 shop-card card-item" data-area="南青山" data-search="comoli apparel design minami aoyama 南青山 fashion flag shop">
                     <div>
                         <div class="flex justify-between items-start">
-                            <span class="text-xs tracking-wider uppercase font-bold text-zinc-400">南青山</span>
+                            <span class="text-xs tracking-wider uppercase font-bold text-zinc-400 font-mono">南青山</span>
                             <span class="px-2.5 py-1 text-xs uppercase font-bold bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded">Fashion</span>
                         </div>
-                        <h4 class="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white mt-4">Auralee</h4>
+                        <h4 class="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white mt-4 font-serif">COMOLI</h4>
+                        <p class="text-sm sm:text-base text-zinc-500 mt-2">Beautiful, minimalist casual wear designed with exceptional Japanese textiles for the everyday climate</p>
+                    </div>
+                    <div class="pt-4 mt-8 border-t border-zinc-100 dark:border-zinc-800 flex justify-between items-center">
+                        <span class="text-sm text-zinc-400 font-medium">Aoyama Store</span>
+                        <a href="https://maps.app.goo.gl/RNGf5HUDL4aVZiDw8" target="_blank" class="inline-flex items-center space-x-1.5 text-sm text-zinc-900 dark:text-white hover:underline font-bold">
+                            <span>Map</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Shop: Auralee (南青山) -->
+                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 shop-card card-item" data-area="南青山" data-search="auralee apparel design minami aoyama 南青山 fashion flag shop">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <span class="text-xs tracking-wider uppercase font-bold text-zinc-400 font-mono">南青山</span>
+                            <span class="px-2.5 py-1 text-xs uppercase font-bold bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded">Fashion</span>
+                        </div>
+                        <h4 class="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white mt-4 font-serif">Auralee</h4>
                         <p class="text-sm sm:text-base text-zinc-500 mt-2">High-end clean Japanese tailoring & premium fabrics</p>
                     </div>
                     <div class="pt-4 mt-8 border-t border-zinc-100 dark:border-zinc-800 flex justify-between items-center">
-                        <span class="text-sm text-zinc-400">Flagship Store</span>
+                        <span class="text-sm text-zinc-400 font-medium">Flagship Store</span>
                         <a href="https://maps.app.goo.gl/Tz6pkhhyjZVSypsKA" target="_blank" class="inline-flex items-center space-x-1.5 text-sm text-zinc-900 dark:text-white hover:underline font-bold">
-                            <span>Open Map</span>
+                            <span>Map</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                         </a>
                     </div>
                 </div>
 
                 <!-- Shop: Sacai (南青山) -->
-                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 shop-card card-item" data-area="南青山" data-search="sacai chitose abe high fashion designer minami aoyama 南青山">
+                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 shop-card card-item" data-area="南青山" data-search="sacai chitose abe high fashion designer minami aoyama 南青山 fashion flag shop">
                     <div>
                         <div class="flex justify-between items-start">
-                            <span class="text-xs tracking-wider uppercase font-bold text-zinc-400">南青山</span>
+                            <span class="text-xs tracking-wider uppercase font-bold text-zinc-400 font-mono">南青山</span>
                             <span class="px-2.5 py-1 text-xs uppercase font-bold bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded">Fashion</span>
                         </div>
-                        <h4 class="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white mt-4">Sacai</h4>
+                        <h4 class="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white mt-4 font-serif">Sacai</h4>
                         <p class="text-sm sm:text-base text-zinc-500 mt-2">Innovative hybrid luxury aesthetic and designs</p>
                     </div>
                     <div class="pt-4 mt-8 border-t border-zinc-100 dark:border-zinc-800 flex justify-between items-center">
-                        <span class="text-sm text-zinc-400">Aoyama Store</span>
+                        <span class="text-sm text-zinc-400 font-medium">Aoyama Store</span>
                         <a href="https://maps.app.goo.gl/BJKFvL3Y4UidJk6g7" target="_blank" class="inline-flex items-center space-x-1.5 text-sm text-zinc-900 dark:text-white hover:underline font-bold">
-                            <span>Open Map</span>
+                            <span>Map</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                         </a>
                     </div>
                 </div>
 
                 <!-- Shop: H Beauty & Youth (南青山) -->
-                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 shop-card card-item" data-area="南青山" data-search="h beauty & youth united arrows curated streetwear minami aoyama 南青山 washroom">
+                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 shop-card card-item" data-area="南青山" data-search="h beauty & youth united arrows curated streetwear minami aoyama 南青山 washroom lifestyle flag shop">
                     <div>
                         <div class="flex justify-between items-start">
-                            <span class="text-xs tracking-wider uppercase font-bold text-zinc-400">南青山</span>
+                            <span class="text-xs tracking-wider uppercase font-bold text-zinc-400 font-mono">南青山</span>
                             <div class="flex items-center space-x-2">
                                 <span class="px-2.5 py-1 text-xs uppercase font-bold bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400 rounded">Washroom</span>
                                 <span class="px-2.5 py-1 text-xs uppercase font-bold bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded">Lifestyle</span>
                             </div>
                         </div>
-                        <h4 class="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white mt-4">H Beauty & Youth</h4>
+                        <h4 class="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white mt-4 font-serif">H Beauty & Youth</h4>
                         <p class="text-sm sm:text-base text-zinc-500 mt-2">Premium upscale apparel curated multi-brand store</p>
                     </div>
                     <div class="pt-4 mt-8 border-t border-zinc-100 dark:border-zinc-800 flex justify-between items-center">
                         <span class="text-sm text-emerald-505 font-bold">Toilet available inside</span>
                         <a href="https://maps.app.goo.gl/RvMBs1KCZuovgeNV8" target="_blank" class="inline-flex items-center space-x-1.5 text-sm text-zinc-900 dark:text-white hover:underline font-bold">
-                            <span>Open Map</span>
+                            <span>Map</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                         </a>
                     </div>
                 </div>
 
                 <!-- Shop: Loftman Tokyo (代代木上原) -->
-                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 shop-card card-item" data-area="代代木上原" data-search="loftman tokyo select store denim apparel yoyogi uehara 代代木上原">
+                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 shop-card card-item" data-area="代代木上原" data-search="loftman tokyo select store denim apparel yoyogi uehara 代代木上原 boutique flag shop">
                     <div>
                         <div class="flex justify-between items-start">
-                            <span class="text-xs tracking-wider uppercase font-bold text-zinc-400">代代木上原</span>
+                            <span class="text-xs tracking-wider uppercase font-bold text-zinc-400 font-mono">代代木上原</span>
                             <span class="px-2.5 py-1 text-xs uppercase font-bold bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded">Boutique</span>
                         </div>
-                        <h4 class="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white mt-4">Loftman Tokyo</h4>
+                        <h4 class="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white mt-4 font-serif">Loftman Tokyo</h4>
                         <p class="text-sm sm:text-base text-zinc-500 mt-2">Excellent curated select store specializing in outdoor and casual brands</p>
                     </div>
                     <div class="pt-4 mt-8 border-t border-zinc-100 dark:border-zinc-800 flex justify-between items-center">
-                        <span class="text-sm text-zinc-400">Yoyogi-Uehara</span>
+                        <span class="text-sm text-zinc-400 font-medium">Yoyogi-Uehara</span>
                         <a href="https://maps.app.goo.gl/GedARmLSdb9TyTbg7" target="_blank" class="inline-flex items-center space-x-1.5 text-sm text-zinc-900 dark:text-white hover:underline font-bold">
-                            <span>Open Map</span>
+                            <span>Map</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                         </a>
                     </div>
                 </div>
 
                 <!-- Shop: Burnish (代代木上原) -->
-                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 shop-card card-item" data-area="代代木上原" data-search="burnish apparel footwear design fashion yoyogi uehara 代代木上原">
+                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 shop-card card-item" data-area="代代木上原" data-search="burnish apparel footwear design fashion yoyogi uehara 代代木上原 flag shop">
                     <div>
                         <div class="flex justify-between items-start">
-                            <span class="text-xs tracking-wider uppercase font-bold text-zinc-400">代代木上原</span>
+                            <span class="text-xs tracking-wider uppercase font-bold text-zinc-400 font-mono">代代木上原</span>
                             <span class="px-2.5 py-1 text-xs uppercase font-bold bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded">Select Store</span>
                         </div>
-                        <h4 class="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white mt-4">Burnish</h4>
+                        <h4 class="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white mt-4 font-serif">Burnish</h4>
                         <p class="text-sm sm:text-base text-zinc-500 mt-2">Beautiful clean apparel and curated imported lifestyle items</p>
                     </div>
                     <div class="pt-4 mt-8 border-t border-zinc-100 dark:border-zinc-800 flex justify-between items-center">
-                        <span class="text-sm text-zinc-400">Yoyogi-Uehara</span>
+                        <span class="text-sm text-zinc-400 font-medium">Yoyogi-Uehara</span>
                         <a href="https://maps.app.goo.gl/UPK1SQ9PUYa3tE4h9" target="_blank" class="inline-flex items-center space-x-1.5 text-sm text-zinc-900 dark:text-white hover:underline font-bold">
-                            <span>Open Map</span>
+                            <span>Map</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                         </a>
                     </div>
                 </div>
 
                 <!-- Shop: Acid Coffee Tokyo (代代木上原) -->
-                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 shop-card card-item" data-area="代代木上原" data-search="acid coffee tokyo coffee cafe shop yoyogi uehara 代代木上原">
+                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 shop-card card-item" data-area="代代木上原" data-search="acid coffee tokyo coffee cafe shop yoyogi uehara 代代木上原 flag shop">
                     <div>
                         <div class="flex justify-between items-start">
-                            <span class="text-xs tracking-wider uppercase font-bold text-zinc-400">代代木上原</span>
+                            <span class="text-xs tracking-wider uppercase font-bold text-zinc-400 font-mono">代代木上原</span>
                             <span class="px-2.5 py-1 text-xs uppercase font-bold bg-amber-50 dark:bg-amber-950/30 text-amber-600 dark:text-amber-400 rounded">Specialty Cafe</span>
                         </div>
-                        <h4 class="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white mt-4">Acid Coffee Tokyo</h4>
+                        <h4 class="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white mt-4 font-serif">Acid Coffee Tokyo</h4>
                         <p class="text-sm sm:text-base text-zinc-500 mt-2">Modern high-quality specialty coffee workspace and stop</p>
                     </div>
                     <div class="pt-4 mt-8 border-t border-zinc-100 dark:border-zinc-800 flex justify-between items-center">
-                        <span class="text-sm text-zinc-400">Yoyogi-Uehara</span>
+                        <span class="text-sm text-zinc-400 font-medium">Yoyogi-Uehara</span>
                         <a href="https://maps.app.goo.gl/WqAhueFecwKRc78b9" target="_blank" class="inline-flex items-center space-x-1.5 text-sm text-zinc-900 dark:text-white hover:underline font-bold">
-                            <span>Open Map</span>
+                            <span>Map</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                         </a>
                     </div>
                 </div>
 
                 <!-- Shop: Coverchord (中目黑) -->
-                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 shop-card card-item" data-area="中目黑" data-search="coverchord nonnative apparel lifestyle nakameguro 中目黑">
+                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 shop-card card-item" data-area="中目黑" data-search="coverchord nonnative apparel lifestyle nakameguro 中目黑 flag shop">
                     <div>
                         <div class="flex justify-between items-start">
-                            <span class="text-xs tracking-wider uppercase font-bold text-zinc-400">中目黑</span>
+                            <span class="text-xs tracking-wider uppercase font-bold text-zinc-400 font-mono">中目黑</span>
                             <span class="px-2.5 py-1 text-xs uppercase font-bold bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded">Apparel</span>
                         </div>
-                        <h4 class="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white mt-4">Coverchord</h4>
+                        <h4 class="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white mt-4 font-serif">Coverchord</h4>
                         <p class="text-sm sm:text-base text-zinc-500 mt-2">Sleek selection, featuring Nonnative and premium casual wear</p>
                     </div>
                     <div class="pt-4 mt-8 border-t border-zinc-100 dark:border-zinc-800 flex justify-between items-center">
-                        <span class="text-sm text-zinc-400">Nakameguro</span>
+                        <span class="text-sm text-zinc-400 font-medium">Nakameguro</span>
                         <a href="https://maps.app.goo.gl/VX3GXgegqN3Vp9XH7" target="_blank" class="inline-flex items-center space-x-1.5 text-sm text-zinc-900 dark:text-white hover:underline font-bold">
-                            <span>Open Map</span>
+                            <span>Map</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                         </a>
                     </div>
                 </div>
 
                 <!-- Shop: 1LDK apartments (中目黑) -->
-                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 shop-card card-item" data-area="中目黑" data-search="1ldk apartments concept store houseware cafe nakameguro 中目黑">
+                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 shop-card card-item" data-area="中目黑" data-search="1ldk apartments concept store houseware cafe nakameguro 中目黑 flag shop">
                     <div>
                         <div class="flex justify-between items-start">
-                            <span class="text-xs tracking-wider uppercase font-bold text-zinc-400">中目黑</span>
+                            <span class="text-xs tracking-wider uppercase font-bold text-zinc-400 font-mono">中目黑</span>
                             <span class="px-2.5 py-1 text-xs uppercase font-bold bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded">Concept Store</span>
                         </div>
-                        <h4 class="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white mt-4">1LDK apartments</h4>
+                        <h4 class="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white mt-4 font-serif">1LDK apartments</h4>
                         <p class="text-sm sm:text-base text-zinc-500 mt-2">Beautiful townhouse-inspired multi-concept curation including fine foods and apparel</p>
                     </div>
                     <div class="pt-4 mt-8 border-t border-zinc-100 dark:border-zinc-800 flex justify-between items-center">
-                        <span class="text-sm text-zinc-400">Nakameguro</span>
+                        <span class="text-sm text-zinc-400 font-medium">Nakameguro</span>
                         <a href="https://maps.app.goo.gl/GC3KFAAWZMD9y9En8" target="_blank" class="inline-flex items-center space-x-1.5 text-sm text-zinc-900 dark:text-white hover:underline font-bold">
-                            <span>Open Map</span>
+                            <span>Map</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                         </a>
                     </div>
@@ -741,23 +753,31 @@
 
         <!-- ================= BRAND EXPLORER TAB ================= -->
         <div id="content-brand" class="tab-content hidden space-y-10 animate-fadeIn">
-            <div class="flex flex-col space-y-8">
+            <div class="flex flex-col space-y-4">
+                
                 <div class="border-b border-zinc-200 dark:border-zinc-800 pb-5">
                     <h2 class="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white font-serif">Curated Brand Index</h2>
                     <p class="text-base text-zinc-500 mt-2">Quick aesthetic reference mapping locations & stocks for your target designers.</p>
                 </div>
 
+                <!-- Section Navigation Shortcuts -->
+                <div class="flex items-center space-x-2 pb-4 border-b border-zinc-200/50 dark:border-zinc-800/50 text-xs sm:text-sm overflow-x-auto whitespace-nowrap">
+                    <span class="text-zinc-400 font-medium">Jump to:</span>
+                    <a href="#brand-clothing" class="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-900 text-zinc-650 dark:text-zinc-350 hover:bg-zinc-200/50 hover:text-zinc-900 dark:hover:text-white transition-all font-semibold">Clothing & Fashion</a>
+                    <a href="#brand-cosmetics" class="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-900 text-zinc-650 dark:text-zinc-350 hover:bg-zinc-200/50 hover:text-zinc-900 dark:hover:text-white transition-all font-semibold">Cosmetics & Lifestyle</a>
+                    <a href="#brand-chiikawa" class="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-zinc-900 text-zinc-650 dark:text-zinc-350 hover:bg-zinc-200/50 hover:text-zinc-900 dark:hover:text-white transition-all font-semibold">Chiikawa & JB</a>
+                </div>
+
                 <!-- CATEGORY 1: CLOTHING & FASHION -->
-                <div>
+                <div id="brand-clothing" class="pt-6 scroll-mt-32">
                     <h3 class="text-lg font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-6 flex items-center">
                         <span class="w-2.5 h-2.5 rounded-full bg-blue-500 mr-2.5"></span>Clothing & Fashion
                     </h3>
 
-                    
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         
                         <!-- Brand: A. Presse -->
-                        <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between">
+                        <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="a presse clothing fashion jingumae loftman tokyo coverchord isetan men 6f">
                             <div>
                                 <div class="flex justify-between items-start">
                                     <h4 class="text-xl font-extrabold text-zinc-900 dark:text-white">A. PRESSE</h4>
@@ -771,25 +791,37 @@
                                 <span class="text-xs text-zinc-400 block mb-1">Target Stocks</span>
                                 <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
                                     • Jingumae Flagship Store
-                                    <a href="https://maps.app.goo.gl/bEkHrrqXycJjYC6K9" target="_blank" class="text-blue-500 hover:underline font-mono text-xs ml-1">(Map)</a>
+                                    <a href="https://maps.app.goo.gl/bEkHrrqXycJjYC6K9" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline text-xs ml-1 font-bold inline-flex items-center space-x-0.5">
+                                        <span>Map</span>
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                    </a>
                                 </span>
                                 <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
                                     • Shinjuku Isetan (Men's Building: 6F)
-                                    <a href="https://maps.app.goo.gl/yicB7YQFj9XcrQadA" target="_blank" class="text-blue-500 hover:underline font-mono text-xs ml-1">(Map)</a>
+                                    <a href="https://maps.app.goo.gl/yicB7YQFj9XcrQadA" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline text-xs ml-1 font-bold inline-flex items-center space-x-0.5">
+                                        <span>Map</span>
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                    </a>
                                 </span>
                                 <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
                                     • Loftman Tokyo
-                                    <a href="https://maps.app.goo.gl/xcpnmeuKPA1yaMmB6" target="_blank" class="text-blue-500 hover:underline font-mono text-xs ml-1">(Map)</a>
+                                    <a href="https://maps.app.goo.gl/xcpnmeuKPA1yaMmB6" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline text-xs ml-1 font-bold inline-flex items-center space-x-0.5">
+                                        <span>Map</span>
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                    </a>
                                 </span>
                                 <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
                                     • Coverchord
-                                    <a href="https://maps.app.goo.gl/ksVuL1Yo4EkDztC56" target="_blank" class="text-blue-500 hover:underline font-mono text-xs ml-1">(Map)</a>
+                                    <a href="https://maps.app.goo.gl/ksVuL1Yo4EkDztC56" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline text-xs ml-1 font-bold inline-flex items-center space-x-0.5">
+                                        <span>Map</span>
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                    </a>
                                 </span>
                             </div>
                         </div>
 
                         <!-- Brand: Auralee -->
-                        <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between">
+                        <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="auralee clothing fashion isetan minami aoyama coverchord burnish">
                             <div>
                                 <div class="flex justify-between items-start">
                                     <h4 class="text-xl font-extrabold text-zinc-900 dark:text-white">AURALEE</h4>
@@ -803,25 +835,37 @@
                                 <span class="text-xs text-zinc-400 block mb-1">Target Stocks</span>
                                 <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
                                     • Shinjuku Isetan (Main Bldg 4F)
-                                    <a href="https://maps.app.goo.gl/yicB7YQFj9XcrQadA" target="_blank" class="text-blue-500 hover:underline font-mono text-xs ml-1">(Map)</a>
+                                    <a href="https://maps.app.goo.gl/yicB7YQFj9XcrQadA" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline text-xs ml-1 font-bold inline-flex items-center space-x-0.5">
+                                        <span>Map</span>
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                    </a>
                                 </span>
                                 <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
                                     • Minami Aoyama Flagship Store
-                                    <a href="https://maps.app.goo.gl/Tz6pkhhyjZVSypsKA" target="_blank" class="text-blue-500 hover:underline font-mono text-xs ml-1">(Map)</a>
+                                    <a href="https://maps.app.goo.gl/Tz6pkhhyjZVSypsKA" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline text-xs ml-1 font-bold inline-flex items-center space-x-0.5">
+                                        <span>Map</span>
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                    </a>
                                 </span>
                                 <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
                                     • Coverchord
-                                    <a href="https://maps.app.goo.gl/ksVuL1Yo4EkDztC56" target="_blank" class="text-blue-500 hover:underline font-mono text-xs ml-1">(Map)</a>
+                                    <a href="https://maps.app.goo.gl/ksVuL1Yo4EkDztC56" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline text-xs ml-1 font-bold inline-flex items-center space-x-0.5">
+                                        <span>Map</span>
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                    </a>
                                 </span>
                                 <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
                                     • Burnish
-                                    <a href="https://maps.app.goo.gl/SMVN7kpQ2XzW1tSJ7" target="_blank" class="text-blue-500 hover:underline font-mono text-xs ml-1">(Map)</a>
+                                    <a href="https://maps.app.goo.gl/SMVN7kpQ2XzW1tSJ7" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline text-xs ml-1 font-bold inline-flex items-center space-x-0.5">
+                                        <span>Map</span>
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                    </a>
                                 </span>
                             </div>
                         </div>
 
                         <!-- Brand: Comoli -->
-                        <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between">
+                        <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="comoli clothing fashion aoyama flagship coverchord">
                             <div>
                                 <div class="flex justify-between items-start">
                                     <h4 class="text-xl font-extrabold text-zinc-900 dark:text-white">COMOLI</h4>
@@ -835,65 +879,23 @@
                                 <span class="text-xs text-zinc-400 block mb-1">Target Stocks</span>
                                 <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
                                     • Aoyama Flagship Store
-                                    <a href="https://maps.app.goo.gl/fpn6Yr98QxuPPEKk8" target="_blank" class="text-blue-500 hover:underline font-mono text-xs ml-1">(Map)</a>
+                                    <a href="https://maps.app.goo.gl/fpn6Yr98QxuPPEKk8" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline text-xs ml-1 font-bold inline-flex items-center space-x-0.5">
+                                        <span>Map</span>
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                    </a>
                                 </span>
                                 <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
                                     • Coverchord
-                                    <a href="https://maps.app.goo.gl/ksVuL1Yo4EkDztC56" target="_blank" class="text-blue-500 hover:underline font-mono text-xs ml-1">(Map)</a>
-                                </span>
-                            </div>
-                        </div>
-
-                        <!-- Brand: Emmi -->
-                        <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between">
-                            <div>
-                                <div class="flex justify-between items-start">
-                                    <h4 class="text-xl font-extrabold text-zinc-900 dark:text-white">EMMI</h4>
-                                    <a href="https://www.instagram.com/emmi.jp" target="_blank" class="px-2.5 py-1 text-xs uppercase font-extrabold tracking-wider bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded hover:text-brand-accent transition-colors">
-                                        IG Feed ↗
+                                    <a href="https://maps.app.goo.gl/ksVuL1Yo4EkDztC56" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline text-xs ml-1 font-bold inline-flex items-center space-x-0.5">
+                                        <span>Map</span>
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                                     </a>
-                                </div>
-                                <p class="text-xs text-zinc-400 mt-1 font-mono">TOKYO, JAPAN</p>
-                            </div>
-                            <div class="pt-4 mt-5 border-t border-zinc-100 dark:border-zinc-800 text-sm space-y-1">
-                                <span class="text-xs text-zinc-400 block mb-1">Target Stocks</span>
-                                <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
-                                    • 3F, Shinjuku Lumine 1 
-                                    <a href="https://www.google.com/maps/search/?api=1&query=Lumine+1+Shinjuku" target="_blank" class="text-blue-500 hover:underline font-mono text-xs ml-1">(Map)</a>
-                                </span>
-                                <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
-                                    • 3F, 有樂町 Lumine 1 
-                                    <a href="https://www.google.com/maps/search/?api=1&query=Lumine+1+Yurakucho" target="_blank" class="text-blue-500 hover:underline font-mono text-xs ml-1">(Map)</a>
-                                </span>
-                            </div>
-                        </div>
-
-                        <!-- Brand: Graphpaper Tokyo -->
-                        <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between">
-                            <div>
-                                <div class="flex justify-between items-start">
-                                    <h4 class="text-xl font-extrabold text-zinc-900 dark:text-white">GRAPHPAPER</h4>
-                                    <a href="https://www.instagram.com/graphpaper_tokyo" target="_blank" class="px-2.5 py-1 text-xs uppercase font-extrabold tracking-wider bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded hover:text-brand-accent transition-colors">
-                                        IG Feed ↗
-                                    </a>
-                                </div>
-                                <p class="text-xs text-zinc-400 mt-1 font-mono">EST. 2015 — TOKYO, JAPAN</p>
-                            </div>
-                            <div class="pt-4 mt-5 border-t border-zinc-100 dark:border-zinc-800 text-sm space-y-1">
-                                <span class="text-xs text-zinc-400 block mb-1">Target Stocks</span>
-                                <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
-                                    • Yoyogi Flagship Store
-                                    <a href="https://maps.app.goo.gl/9NyvhZ8xt9FtpaUF7" target="_blank" class="text-blue-500 hover:underline font-mono text-xs ml-1">(Map)</a>
-                                </span>
-                                <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
-                                    • Coverchord
-                                    <a href="https://maps.app.goo.gl/ksVuL1Yo4EkDztC56" target="_blank" class="text-blue-500 hover:underline font-mono text-xs ml-1">(Map)</a>
                                 </span>
                             </div>
                         </div>
 
                         <!-- Brand: Issey Miyake -->
-                        <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between">
+                        <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="issey miyake clothing fashion isetan goods goods accessory">
                             <div>
                                 <div class="flex justify-between items-start">
                                     <h4 class="text-xl font-extrabold text-zinc-900 dark:text-white">ISSEY MIYAKE</h4>
@@ -907,13 +909,16 @@
                                 <span class="text-xs text-zinc-400 block mb-1">Target Stocks</span>
                                 <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
                                     • Shinjuku Isetan Main (1F GOODS GOODS)
-                                    <a href="https://maps.app.goo.gl/yicB7YQFj9XcrQadA" target="_blank" class="text-blue-500 hover:underline font-mono text-xs ml-1">(Map)</a>
+                                    <a href="https://maps.app.goo.gl/yicB7YQFj9XcrQadA" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline text-xs ml-1 font-bold inline-flex items-center space-x-0.5">
+                                        <span>Map</span>
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                    </a>
                                 </span>
                             </div>
                         </div>
 
                         <!-- Brand: Sacai -->
-                        <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between">
+                        <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="sacai clothing fashion isetan aoyama flagship">
                             <div>
                                 <div class="flex justify-between items-start">
                                     <h4 class="text-xl font-extrabold text-zinc-900 dark:text-white">SACAI</h4>
@@ -927,61 +932,23 @@
                                 <span class="text-xs text-zinc-400 block mb-1">Target Stocks</span>
                                 <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
                                     • Shinjuku Isetan (Main 3F & Men's 3F)
-                                    <a href="https://maps.app.goo.gl/yicB7YQFj9XcrQadA" target="_blank" class="text-blue-500 hover:underline font-mono text-xs ml-1">(Map)</a>
+                                    <a href="https://maps.app.goo.gl/yicB7YQFj9XcrQadA" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline text-xs ml-1 font-bold inline-flex items-center space-x-0.5">
+                                        <span>Map</span>
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                    </a>
                                 </span>
                                 <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
                                     • Aoyama Flagship Store
-                                    <a href="https://maps.app.goo.gl/BJKFvL3Y4UidJk6g7" target="_blank" class="text-blue-500 hover:underline font-mono text-xs ml-1">(Map)</a>
-                                </span>
-                            </div>
-                        </div>
-
-                        <!-- Brand: Sea Room Lynn -->
-                        <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between">
-                            <div>
-                                <div class="flex justify-between items-start">
-                                    <h4 class="text-xl font-extrabold text-zinc-900 dark:text-white">SEA ROOM LYNN</h4>
-                                    <a href="https://www.instagram.com/searoomlynn_official" target="_blank" class="px-2.5 py-1 text-xs uppercase font-extrabold tracking-wider bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded hover:text-brand-accent transition-colors">
-                                        IG Feed ↗
+                                    <a href="https://maps.app.goo.gl/BJKFvL3Y4UidJk6g7" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline text-xs ml-1 font-bold inline-flex items-center space-x-0.5">
+                                        <span>Map</span>
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                                     </a>
-                                </div>
-                                <p class="text-xs text-zinc-400 mt-1 font-mono">TOKYO, JAPAN</p>
-                            </div>
-                            <div class="pt-4 mt-5 border-t border-zinc-100 dark:border-zinc-800 text-sm">
-                                <span class="text-xs text-zinc-400 block mb-1">Target Stocks</span>
-                                <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
-                                    • B1, Shinjuku Lumine EST
-                                    <a href="https://www.google.com/maps/search/?api=1&query=Lumine+Est+Shinjuku" target="_blank" class="text-blue-500 hover:underline font-mono text-xs ml-1">(Map)</a>
-                                </span>
-                            </div>
-                        </div>
-
-                        <!-- Brand: Snidel -->
-                        <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between">
-                            <div>
-                                <div class="flex justify-between items-start">
-                                    <h4 class="text-xl font-extrabold text-zinc-900 dark:text-white">SNIDEL</h4>
-                                    <a href="https://www.instagram.com/snidel_official" target="_blank" class="px-2.5 py-1 text-xs uppercase font-extrabold tracking-wider bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded hover:text-brand-accent transition-colors">
-                                        IG Feed ↗
-                                    </a>
-                                </div>
-                                <p class="text-xs text-zinc-400 mt-1 font-mono">TOKYO, JAPAN</p>
-                            </div>
-                            <div class="pt-4 mt-5 border-t border-zinc-100 dark:border-zinc-800 text-sm space-y-1">
-                                <span class="text-xs text-zinc-400 block mb-1">Target Stocks</span>
-                                <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
-                                    • 2F, Shinjuku Lumine 2
-                                    <a href="https://www.google.com/maps/search/?api=1&query=Lumine+2+Shinjuku" target="_blank" class="text-blue-500 hover:underline font-mono text-xs ml-1">(Map)</a>
-                                </span>
-                                <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
-                                    • 4F, 有樂町 Lumine 1
-                                    <a href="https://www.google.com/maps/search/?api=1&query=Lumine+1+Yurakucho" target="_blank" class="text-blue-500 hover:underline font-mono text-xs ml-1">(Map)</a>
                                 </span>
                             </div>
                         </div>
 
                         <!-- Brand: The Row -->
-                        <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between">
+                        <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="the row clothing fashion isetan ginza six">
                             <div>
                                 <div class="flex justify-between items-start">
                                     <h4 class="text-xl font-extrabold text-zinc-900 dark:text-white">THE ROW</h4>
@@ -995,17 +962,23 @@
                                 <span class="text-xs text-zinc-400 block mb-1">Target Stocks</span>
                                 <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
                                     • Shinjuku Isetan (Main Bldg 4F)
-                                    <a href="https://maps.app.goo.gl/yicB7YQFj9XcrQadA" target="_blank" class="text-blue-500 hover:underline font-mono text-xs ml-1">(Map)</a>
+                                    <a href="https://maps.app.goo.gl/yicB7YQFj9XcrQadA" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline text-xs ml-1 font-bold inline-flex items-center space-x-0.5">
+                                        <span>Map</span>
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                    </a>
                                 </span>
                                 <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
                                     • 3F, Ginza Six
-                                    <a href="https://maps.app.goo.gl/h7mFEUkcwiqcHRff7" target="_blank" class="text-blue-500 hover:underline font-mono text-xs ml-1">(Map)</a>
+                                    <a href="https://maps.app.goo.gl/h7mFEUkcwiqcHRff7" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline text-xs ml-1 font-bold inline-flex items-center space-x-0.5">
+                                        <span>Map</span>
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                    </a>
                                 </span>
                             </div>
                         </div>
 
                         <!-- Brand: Unlikely -->
-                        <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between">
+                        <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="unlikely clothing fashion coverchord loftman tokyo isetan men 6f">
                             <div>
                                 <div class="flex justify-between items-start">
                                     <h4 class="text-xl font-extrabold text-zinc-900 dark:text-white">UNLIKELY</h4>
@@ -1019,15 +992,24 @@
                                 <span class="text-xs text-zinc-400 block mb-1">Target Stocks</span>
                                 <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
                                     • Coverchord
-                                    <a href="https://maps.app.goo.gl/ksVuL1Yo4EkDztC56" target="_blank" class="text-blue-500 hover:underline font-mono text-xs ml-1">(Map)</a>
+                                    <a href="https://maps.app.goo.gl/ksVuL1Yo4EkDztC56" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline text-xs ml-1 font-bold inline-flex items-center space-x-0.5">
+                                        <span>Map</span>
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                    </a>
                                 </span>
                                 <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
                                     • Loftman Tokyo
-                                    <a href="https://maps.app.goo.gl/xcpnmeuKPA1yaMmB6" target="_blank" class="text-blue-500 hover:underline font-mono text-xs ml-1">(Map)</a>
+                                    <a href="https://maps.app.goo.gl/xcpnmeuKPA1yaMmB6" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline text-xs ml-1 font-bold inline-flex items-center space-x-0.5">
+                                        <span>Map</span>
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                    </a>
                                 </span>
                                 <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
                                     • Shinjuku Isetan (Men's Building: 6F)
-                                    <a href="https://maps.app.goo.gl/yicB7YQFj9XcrQadA" target="_blank" class="text-blue-500 hover:underline font-mono text-xs ml-1">(Map)</a>
+                                    <a href="https://maps.app.goo.gl/yicB7YQFj9XcrQadA" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline text-xs ml-1 font-bold inline-flex items-center space-x-0.5">
+                                        <span>Map</span>
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                    </a>
                                 </span>
                             </div>
                         </div>
@@ -1036,16 +1018,15 @@
                 </div>
 
                 <!-- CATEGORY 2: COSMETICS & LIFESTYLE -->
-                <div class="pt-6">
+                <div id="brand-cosmetics" class="pt-6 scroll-mt-32">
                     <h3 class="text-lg font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-6 flex items-center">
                         <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 mr-2.5"></span>Cosmetics & Lifestyle
                     </h3>
 
-
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         
                         <!-- Brand: Aesop -->
-                        <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between">
+                        <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="aesop cosmetics lifestyle isetan matsuya ginza">
                             <div>
                                 <div class="flex justify-between items-start">
                                     <h4 class="text-xl font-extrabold text-zinc-900 dark:text-white">AESOP</h4>
@@ -1059,17 +1040,23 @@
                                 <span class="text-xs text-zinc-400 block mb-1">Target Stocks</span>
                                 <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
                                     • Shinjuku Isetan (Main Bldg B2F)
-                                    <a href="https://maps.app.goo.gl/yicB7YQFj9XcrQadA" target="_blank" class="text-blue-500 hover:underline font-mono text-xs ml-1">(Map)</a>
+                                    <a href="https://maps.app.goo.gl/yicB7YQFj9XcrQadA" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline text-xs ml-1 font-bold inline-flex items-center space-x-0.5">
+                                        <span>Map</span>
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                    </a>
                                 </span>
-                                <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
-                                    • 1F 松屋銀座 (Ginza Sta. Exit A12) <span class="text-xs text-zinc-400 font-normal">(Go Tourist Counter at 3F first)</span>
-                                    <a href="https://maps.app.goo.gl/koUFd7Lo7cZL6AVt6" target="_blank" class="text-blue-500 hover:underline font-mono text-xs ml-1">(Map)</a>
+                                <span class="font-semibold text-zinc-800 dark:text-zinc-200 block leading-relaxed">
+                                    • 1F 松屋銀座 (Ginza Exit A12) <span class="text-xs text-zinc-400 font-normal block sm:inline">(Go Tourist Counter at 3F first)</span>
+                                    <a href="https://maps.app.goo.gl/koUFd7Lo7cZL6AVt6" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline text-xs sm:ml-1 font-bold inline-flex items-center space-x-0.5">
+                                        <span>Map</span>
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                    </a>
                                 </span>
                             </div>
                         </div>
 
                         <!-- Brand: Baum -->
-                        <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between">
+                        <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="baum cosmetics lifestyle isetan">
                             <div>
                                 <div class="flex justify-between items-start">
                                     <h4 class="text-xl font-extrabold text-zinc-900 dark:text-white">BAUM</h4>
@@ -1083,7 +1070,179 @@
                                 <span class="text-xs text-zinc-400 block mb-1">Target Stocks</span>
                                 <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
                                     • Shinjuku Isetan (Main Bldg B2F)
-                                    <a href="https://maps.app.goo.gl/yicB7YQFj9XcrQadA" target="_blank" class="text-blue-500 hover:underline font-mono text-xs ml-1">(Map)</a>
+                                    <a href="https://maps.app.goo.gl/yicB7YQFj9XcrQadA" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline text-xs ml-1 font-bold inline-flex items-center space-x-0.5">
+                                        <span>Map</span>
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Brand: Marks & Web -->
+                        <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="marks and web cosmetics lifestyle lumine 2 yoyogi yurakucho">
+                            <div>
+                                <div class="flex justify-between items-start">
+                                    <h4 class="text-xl font-extrabold text-zinc-900 dark:text-white">MARKS & WEB</h4>
+                                    <a href="https://www.instagram.com/marksandweb" target="_blank" class="px-2.5 py-1 text-xs uppercase font-extrabold tracking-wider bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded hover:text-brand-accent transition-colors">
+                                        IG Feed ↗
+                                    </a>
+                                </div>
+                                <p class="text-xs text-zinc-400 mt-1 font-mono">TOKYO, JAPAN</p>
+                            </div>
+                            <div class="pt-4 mt-5 border-t border-zinc-100 dark:border-zinc-800 text-sm space-y-1.5">
+                                <span class="text-xs text-zinc-400 block mb-1">Target Stocks</span>
+                                <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
+                                    • 2F, Shinjuku Lumine 2
+                                    <a href="https://www.google.com/maps/search/?api=1&query=Lumine+2+Shinjuku" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline text-xs ml-1 font-bold inline-flex items-center space-x-0.5">
+                                        <span>Map</span>
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                    </a>
+                                </span>
+                                <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
+                                    • B1, 有樂町 Lumine 1
+                                    <a href="https://www.google.com/maps/search/?api=1&query=Lumine+1+Yurakucho" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline text-xs ml-1 font-bold inline-flex items-center space-x-0.5">
+                                        <span>Map</span>
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Brand: Wacoal -->
+                        <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="wacoal cosmetics lifestyle matsuya ginza exit a12 undergarment">
+                            <div>
+                                <div class="flex justify-between items-start">
+                                    <h4 class="text-xl font-extrabold text-zinc-900 dark:text-white">WACOAL</h4>
+                                    <a href="https://www.instagram.com/wacoal.jp" target="_blank" class="px-2.5 py-1 text-xs uppercase font-extrabold tracking-wider bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded hover:text-brand-accent transition-colors">
+                                        IG Feed ↗
+                                    </a>
+                                </div>
+                                <p class="text-xs text-zinc-400 mt-1 font-mono">EST. 1946 — KYOTO, JAPAN</p>
+                            </div>
+                            <div class="pt-4 mt-5 border-t border-zinc-100 dark:border-zinc-800 text-sm">
+                                <span class="text-xs text-zinc-400 block mb-1">Target Stocks</span>
+                                <span class="font-semibold text-zinc-800 dark:text-zinc-200 block leading-relaxed">
+                                    • 6F 松屋銀座 (Ginza Exit A12) <span class="text-xs text-zinc-400 font-normal block sm:inline">(Go Tourist Counter at 3F first)</span>
+                                    <a href="https://maps.app.goo.gl/koUFd7Lo7cZL6AVt6" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline text-xs sm:ml-1 font-bold inline-flex items-center space-x-0.5">
+                                        <span>Map</span>
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- CATEGORY 3: CHIIKAWA & JB -->
+                <div id="brand-chiikawa" class="pt-6 scroll-mt-32">
+                    <h3 class="text-lg font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-6 flex items-center">
+                        <span class="w-2.5 h-2.5 rounded-full bg-yellow-500 mr-2.5 animate-pulse"></span>Chiikawa & JB
+                    </h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        
+                        <!-- Item 1: Chiikawa Park -->
+                        <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="chiikawa park ticket advanced booking merchandise mascot">
+                            <div>
+                                <div class="flex justify-between items-start">
+                                    <h4 class="text-xl font-extrabold text-zinc-900 dark:text-white">Chiikawa Park</h4>
+                                    <span class="px-2.5 py-1 text-xs uppercase font-extrabold bg-red-650 text-rose-600 dark:text-rose-400 rounded">Ticket Required</span>
+                                </div>
+                                <p class="text-xs text-zinc-400 mt-1 font-mono">POPULAR checkpoint</p>
+                            </div>
+                            <div class="pt-4 mt-5 border-t border-zinc-100 dark:border-zinc-800 text-sm">
+                                <span class="text-xs text-zinc-400 block mb-1">Target Spot</span>
+                                <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
+                                    • Harajuku / Aoyama Area
+                                    <a href="https://maps.app.goo.gl/mr2EkWF555u7mz2t5" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline text-xs ml-1 font-bold inline-flex items-center space-x-0.5">
+                                        <span>Map</span>
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Item 2: Chiikawa Land Shinjuku -->
+                        <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="chiikawa land shinjuku east exit specialty mascot gift">
+                            <div>
+                                <div class="flex justify-between items-start">
+                                    <h4 class="text-xl font-extrabold text-zinc-900 dark:text-white">Chiikawa Land Shinjuku</h4>
+                                    <span class="px-2.5 py-1 text-xs uppercase font-extrabold bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded">Mascot</span>
+                                </div>
+                                <p class="text-xs text-zinc-400 mt-1 font-mono">Shinjuku East Exit</p>
+                            </div>
+                            <div class="pt-4 mt-5 border-t border-zinc-100 dark:border-zinc-800 text-sm">
+                                <span class="text-xs text-zinc-400 block mb-1">Target Spot</span>
+                                <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
+                                    • Shinjuku Station Area
+                                    <a href="https://maps.app.goo.gl/Z151X4K9A4ZiaWvCA" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline text-xs ml-1 font-bold inline-flex items-center space-x-0.5">
+                                        <span>Map</span>
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Item 3: Chiikawa Land Harajuku -->
+                        <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="chiikawa land harajuku specialty mascot gift">
+                            <div>
+                                <div class="flex justify-between items-start">
+                                    <h4 class="text-xl font-extrabold text-zinc-900 dark:text-white">Chiikawa Land Harajuku</h4>
+                                    <span class="px-2.5 py-1 text-xs uppercase font-extrabold bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded">Mascot</span>
+                                </div>
+                                <p class="text-xs text-zinc-400 mt-1 font-mono">Kiddyland Harajuku</p>
+                            </div>
+                            <div class="pt-4 mt-5 border-t border-zinc-100 dark:border-zinc-800 text-sm">
+                                <span class="text-xs text-zinc-400 block mb-1">Target Spot</span>
+                                <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
+                                    • Harajuku / Shibuya Area
+                                    <a href="https://maps.app.goo.gl/ZZEcByHuB5HbUF3U8" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline text-xs ml-1 font-bold inline-flex items-center space-x-0.5">
+                                        <span>Map</span>
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Item 4: Chiikawa Bakery Harajuku -->
+                        <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="chiikawa bakery harajuku bakery bread themed cafe">
+                            <div>
+                                <div class="flex justify-between items-start">
+                                    <h4 class="text-xl font-extrabold text-zinc-900 dark:text-white">Chiikawa Bakery Harajuku</h4>
+                                    <span class="px-2.5 py-1 text-xs uppercase font-extrabold bg-amber-500/10 text-amber-600 rounded">Food & Mascot</span>
+                                </div>
+                                <p class="text-xs text-zinc-400 mt-1 font-mono">Special Themed Cafe</p>
+                            </div>
+                            <div class="pt-4 mt-5 border-t border-zinc-100 dark:border-zinc-800 text-sm">
+                                <span class="text-xs text-zinc-400 block mb-1">Target Spot</span>
+                                <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
+                                    • Harajuku Area
+                                    <a href="https://maps.app.goo.gl/FT9kvmQJ3mHCxNek6" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline text-xs ml-1 font-bold inline-flex items-center space-x-0.5">
+                                        <span>Map</span>
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Item 5: Jokebear Store (4F) -->
+                        <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="jokebear store jb 4f mascot character specialty shop">
+                            <div>
+                                <div class="flex justify-between items-start">
+                                    <h4 class="text-xl font-extrabold text-zinc-900 dark:text-white">Jokebear Store (4F)</h4>
+                                    <span class="px-2.5 py-1 text-xs uppercase font-extrabold bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded">Mascot</span>
+                                </div>
+                                <p class="text-xs text-zinc-400 mt-1 font-mono">JB Merchandise</p>
+                            </div>
+                            <div class="pt-4 mt-5 border-t border-zinc-100 dark:border-zinc-800 text-sm">
+                                <span class="text-xs text-zinc-400 block mb-1">Target Spot</span>
+                                <span class="font-semibold text-zinc-800 dark:text-zinc-200 block">
+                                    • Shibuya Parco 4F Area
+                                    <a href="https://maps.app.goo.gl/aDkEW5JnAwLB1sNr8" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline text-xs ml-1 font-bold inline-flex items-center space-x-0.5">
+                                        <span>Map</span>
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                    </a>
                                 </span>
                             </div>
                         </div>
@@ -1098,184 +1257,167 @@
         <div id="content-transport" class="tab-content hidden space-y-10 animate-fadeIn">
             <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
                 
-                <!-- Left Flights & Bus schedules (8 Cols) -->
-                <div class="md:col-span-8 space-y-10">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <h2 class="text-xl font-bold tracking-tight text-zinc-800 dark:text-zinc-200">Flights Summary</h2>
-                            <span class="text-sm text-zinc-400">Hong Kong Express</span>
-                        </div>
-
-                        <!-- Flight Cards Boarding Pass Style -->
-                        <div class="space-y-6">
-                            
-                            <!-- Flight Outward -->
-                            <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 rounded-2xl overflow-hidden card-item" data-search="flight outward hkg nrt uo854 28/6 terminal 2 01:15 06:45">
-                                <div class="bg-zinc-100 dark:bg-zinc-800 px-6 py-4.5 flex justify-between items-center">
-                                    <div class="flex items-center space-x-2.5">
-                                        <span class="text-xs sm:text-sm uppercase font-extrabold tracking-widest text-zinc-650 dark:text-zinc-305">Outbound Flight</span>
-                                    </div>
-                                    <span class="text-sm sm:text-base font-mono font-extrabold text-zinc-900 dark:text-white">UO 854</span>
-                                </div>
-                                
-                                <div class="p-8">
-                                    <div class="flex justify-between items-center text-center">
-                                        <div class="text-left">
-                                            <h4 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white">HKG</h4>
-                                            <p class="text-2xl font-bold text-zinc-800 dark:text-zinc-200 mt-2 font-mono">01:15</p>
-                                            <p class="text-xs sm:text-sm text-zinc-400 mt-0.5">Hong Kong</p>
-                                        </div>
-                                        
-                                        <div class="flex-grow px-5 flex flex-col items-center justify-center relative">
-                                            <div class="w-full border-t-2 border-dashed border-zinc-200 dark:border-zinc-800 absolute top-5"></div>
-                                            <svg class="w-9 h-9 text-zinc-400 dark:text-zinc-655 bg-white dark:bg-zinc-900/40 px-2.5 z-10 transform rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
-                                            
-                                            <!-- Styled Purple Logo Integration -->
-                                            <div class="flex items-center space-x-1 mt-2.5 z-10 px-1 bg-brand-light dark:bg-zinc-900 rounded">
-                                                <svg class="w-4 h-4 text-purple-600 dark:text-purple-400" fill="currentColor" viewBox="0 0 24 24">
-                                                    <path d="M21.5 11.5l-8.5-7.5h-2.5l5.5 7.5h-10l-3.5-3.5h-2l1.5 3.5v1l-1.5 3.5h2l3.5-3.5h10l-5.5 7.5h2.5l8.5-7.5z"/>
-                                                </svg>
-                                                <span class="text-[11px] sm:text-xs text-purple-600 dark:text-purple-400 tracking-wider font-mono font-bold">HK Express</span>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="text-right">
-                                            <h4 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white">NRT</h4>
-                                            <p class="text-2xl font-bold text-zinc-800 dark:text-zinc-200 mt-2 font-mono">06:45</p>
-                                            <p class="text-xs sm:text-sm text-zinc-400 mt-0.5">Narita Terminal 2</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="grid grid-cols-2 gap-6 mt-8 pt-6 border-t border-zinc-100 dark:border-zinc-800 text-base">
-                                        <div>
-                                            <span class="text-xs sm:text-sm text-zinc-400 block mb-1">Departure Date</span>
-                                            <span class="font-bold text-zinc-800 dark:text-zinc-200">28 June (Sun)</span>
-                                        </div>
-                                        <div class="text-right">
-                                            <span class="text-xs sm:text-sm text-zinc-400 block mb-1">Departure Terminal</span>
-                                            <span class="font-extrabold text-red-650 dark:text-red-400 text-red-600">Terminal 2</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Flight Return -->
-                            <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 rounded-2xl overflow-hidden card-item" data-search="flight return nrt hkg uo857 2/7 terminal 2 08:00 11:45">
-                                <div class="bg-zinc-100 dark:bg-zinc-800 px-6 py-4.5 flex justify-between items-center">
-                                    <div class="flex items-center space-x-2.5">
-                                        <span class="text-xs sm:text-sm uppercase font-extrabold tracking-widest text-zinc-650 dark:text-zinc-305">Return Flight</span>
-                                    </div>
-                                    <span class="text-sm sm:text-base font-mono font-extrabold text-zinc-900 dark:text-white">UO 857</span>
-                                </div>
-                                
-                                <div class="p-8">
-                                    <div class="flex justify-between items-center text-center">
-                                        <div class="text-left">
-                                            <h4 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white">NRT</h4>
-                                            <p class="text-2xl font-bold text-zinc-800 dark:text-zinc-200 mt-2 font-mono">08:00</p>
-                                            <p class="text-xs sm:text-sm text-zinc-400 mt-0.5">Narita Terminal 2</p>
-                                        </div>
-                                        
-                                        <div class="flex-grow px-5 flex flex-col items-center justify-center relative">
-                                            <div class="w-full border-t-2 border-dashed border-zinc-200 dark:border-zinc-800 absolute top-5"></div>
-                                            <svg class="w-9 h-9 text-zinc-400 dark:text-zinc-655 bg-white dark:bg-zinc-900/40 px-2.5 z-10 transform rotate-270" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
-                                            
-                                            <!-- Styled Purple Logo Integration -->
-                                            <div class="flex items-center space-x-1 mt-2.5 z-10 px-1 bg-brand-light dark:bg-zinc-900 rounded">
-                                                <svg class="w-4 h-4 text-purple-600 dark:text-purple-400" fill="currentColor" viewBox="0 0 24 24">
-                                                    <path d="M21.5 11.5l-8.5-7.5h-2.5l5.5 7.5h-10l-3.5-3.5h-2l1.5 3.5v1l-1.5 3.5h2l3.5-3.5h10l-5.5 7.5h2.5l8.5-7.5z"/>
-                                                </svg>
-                                                <span class="text-[11px] sm:text-xs text-purple-600 dark:text-purple-400 tracking-wider font-mono font-bold">HK Express</span>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="text-right">
-                                            <h4 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white">HKG</h4>
-                                            <p class="text-2xl font-bold text-zinc-800 dark:text-zinc-200 mt-2 font-mono">11:45</p>
-                                            <p class="text-xs sm:text-sm text-zinc-400 mt-0.5">Hong Kong</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="grid grid-cols-2 gap-6 mt-8 pt-6 border-t border-zinc-100 dark:border-zinc-800 text-base">
-                                        <div>
-                                            <span class="text-xs sm:text-sm text-zinc-400 block mb-1">Departure Date</span>
-                                            <span class="font-bold text-zinc-800 dark:text-zinc-200">2 July (Thu)</span>
-                                        </div>
-                                        <div class="text-right">
-                                            <span class="text-xs sm:text-sm text-zinc-400 block mb-1">Departure Terminal</span>
-                                            <span class="font-extrabold text-red-650 dark:text-red-400 text-red-600">Terminal 2</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
+                <!-- Left Flights (8 Cols) -->
+                <div class="md:col-span-8 space-y-8">
+                    <div class="flex items-center justify-between">
+                        <h2 class="text-xl font-bold tracking-tight text-zinc-800 dark:text-zinc-200">Flights Summary</h2>
+                        <span class="text-sm text-zinc-400">Hong Kong Express</span>
                     </div>
 
-
-                    <!-- Airport Bus Section -->
-                    <div class="border-t border-zinc-200 dark:border-zinc-800 pt-8 card-item" data-search="airport bus limousine limousinebus tyo nrt terminal 2 shinjuku tokyo timetable stop 6">
-                        <div class="flex items-center space-x-3 mb-6">
-                            <span class="p-2 bg-blue-500/10 text-brand-accent dark:text-blue-400 rounded-xl">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-                            </span>
-                            <h2 class="text-xl font-bold tracking-tight text-zinc-800 dark:text-zinc-200">Airport Bus</h2>
-                        </div>
-
-                        <!-- Brief Timetable Layout -->
-                        <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 rounded-2xl p-6 mb-6">
-                            <h3 class="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-4">
-                                Departure Timetable: From NRT Terminal 2
-                            </h3>
+                    <!-- Flight Cards Boarding Pass Style -->
+                    <div class="space-y-8">
+                        
+                        <!-- Flight Outward -->
+                        <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 rounded-2xl overflow-hidden card-item" data-search="flight outbound hkg nrt uo854 28/6 terminal 2 01:15 06:45 outbound">
+                            <div class="bg-zinc-100 dark:bg-zinc-800 px-6 py-4.5 flex justify-between items-center">
+                                <div class="flex items-center space-x-2.5">
+                                    <span class="text-xs sm:text-sm uppercase font-extrabold tracking-widest text-zinc-650 dark:text-zinc-300">Outbound Flight</span>
+                                </div>
+                                <span class="text-sm sm:text-base font-mono font-extrabold text-zinc-900 dark:text-white">UO 854</span>
+                            </div>
                             
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <!-- Destination: Shinjuku -->
-                                <div class="space-y-3">
-                                    <div class="flex justify-between items-center">
-                                        <span class="text-base font-bold text-zinc-850 dark:text-zinc-200 font-serif italic">To Shinjuku</span>
-                                        <span class="text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 px-2 py-0.5 rounded-md font-mono">Limousine Bus</span>
+                            <div class="p-8">
+                                <div class="flex justify-between items-center text-center">
+                                    <div class="text-left">
+                                        <h4 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white">HKG</h4>
+                                        <p class="text-2xl font-bold text-zinc-800 dark:text-zinc-200 mt-2 font-mono">01:15</p>
+                                        <p class="text-xs sm:text-sm text-zinc-400 mt-0.5">Hong Kong</p>
                                     </div>
-                                    <div class="space-y-2 text-sm">
-                                        <p class="flex justify-between border-b border-zinc-100 dark:border-zinc-800 pb-1">
-                                            <span class="text-zinc-400">7:00 AM — 8:59 AM</span>
-                                            <span class="font-mono font-semibold">Every :10, :40</span>
-                                        </p>
-                                        <p class="flex justify-between border-b border-zinc-100 dark:border-zinc-800 pb-1">
-                                            <span class="text-zinc-400">9:00 AM — 11:59 AM</span>
-                                            <span class="font-mono font-semibold">Every :10, :30, :50</span>
-                                        </p>
+                                    
+                                    <div class="flex-grow px-5 flex flex-col items-center justify-center relative">
+                                        <div class="w-full border-t-2 border-dashed border-zinc-200 dark:border-zinc-800 absolute top-5"></div>
+                                        <svg class="w-9 h-9 text-zinc-400 dark:text-zinc-650 bg-white dark:bg-zinc-900/40 px-2.5 z-10 transform rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+                                        
+                                        <!-- Styled Purple Logo Integration -->
+                                        <div class="flex items-center space-x-1 mt-2.5 z-10 px-1 bg-brand-light dark:bg-zinc-900 rounded">
+                                            <svg class="w-4 h-4 text-purple-600 dark:text-purple-400" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M21.5 11.5l-8.5-7.5h-2.5l5.5 7.5h-10l-3.5-3.5h-2l1.5 3.5v1l-1.5 3.5h2l3.5-3.5h10l-5.5 7.5h2.5l8.5-7.5z"/>
+                                            </svg>
+                                            <span class="text-[11px] sm:text-xs text-purple-600 dark:text-purple-400 tracking-wider font-mono font-bold">HK Express</span>
+                                        </div>
                                     </div>
-                                    <div class="flex space-x-2 pt-1.5">
-                                        <a href="https://www.limousinebus.co.jp/zh-tw/timetable/detail/Narita-Shinjuku/?dir=1&d=2026-06-28" target="_blank" class="flex-grow text-center text-xs font-bold bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 py-1.5 rounded-lg text-zinc-700 dark:text-zinc-300">
-                                            Timetable ↗
-                                        </a>
-                                        <a href="https://www.limousinebus.co.jp/zh-tw/airport/from-narita/" target="_blank" class="flex-grow text-center text-xs font-bold bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 py-1.5 rounded-lg text-zinc-700 dark:text-zinc-300">
-                                            Stop Map ↗
-                                        </a>
+                                    
+                                    <div class="text-right">
+                                        <h4 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white">NRT</h4>
+                                        <p class="text-2xl font-bold text-zinc-800 dark:text-zinc-200 mt-2 font-mono">06:45</p>
+                                        <p class="text-xs sm:text-sm text-zinc-400 mt-0.5">Narita Terminal 2</p>
                                     </div>
                                 </div>
 
-                                <!-- Destination: Tokyo Station -->
-                                <div class="space-y-3">
-                                    <div class="flex justify-between items-center">
-                                        <span class="text-base font-bold text-zinc-850 dark:text-zinc-200 font-serif italic">To Tokyo (Bus Stop 6)</span>
-                                        <span class="text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 px-2 py-0.5 rounded-md font-mono">TYO-NRT Bus</span>
+                                <div class="grid grid-cols-2 gap-6 mt-8 pt-6 border-t border-zinc-100 dark:border-zinc-800 text-base">
+                                    <div>
+                                        <span class="text-xs sm:text-sm text-zinc-400 block mb-1">Departure Date</span>
+                                        <span class="font-bold text-zinc-800 dark:text-zinc-200">28 June (Sun)</span>
                                     </div>
-                                    <div class="space-y-2 text-sm">
-                                        <p class="flex justify-between border-b border-zinc-100 dark:border-zinc-800 pb-1">
-                                            <span class="text-zinc-400">7:00 AM — 11:00 AM</span>
-                                            <span class="font-mono font-semibold">Every 15 mins</span>
-                                        </p>
-                                        <p class="text-zinc-400 text-xs mt-1">Direct high-speed services departing Terminal 2 platform.</p>
+                                    <div class="text-right">
+                                        <span class="text-xs sm:text-sm text-zinc-400 block mb-1">Departure Terminal</span>
+                                        <span class="font-extrabold text-red-650 dark:text-red-400 text-red-600">Terminal 2</span>
                                     </div>
-                                    <div class="flex space-x-2 pt-1.5">
-                                        <a href="https://tyo-nrt.com/wp/wp-content/themes/tyo-nrt/files/timetable_new_horizon.pdf" target="_blank" class="flex-grow text-center text-xs font-bold bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 py-1.5 rounded-lg text-zinc-700 dark:text-zinc-300">
-                                            Timetable ↗
-                                        </a>
-                                        <a href="https://tyo-nrt.com/en/busstop/terminal2" target="_blank" class="flex-grow text-center text-xs font-bold bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 py-1.5 rounded-lg text-zinc-700 dark:text-zinc-300">
-                                            Stop Map ↗
-                                        </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Flight Return -->
+                        <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 rounded-2xl overflow-hidden card-item" data-search="flight return nrt hkg uo857 2/7 terminal 2 08:00 11:45 inbound">
+                            <div class="bg-zinc-100 dark:bg-zinc-800 px-6 py-4.5 flex justify-between items-center">
+                                <div class="flex items-center space-x-2.5">
+                                    <span class="text-xs sm:text-sm uppercase font-extrabold tracking-widest text-zinc-650 dark:text-zinc-300">Return Flight</span>
+                                </div>
+                                <span class="text-sm sm:text-base font-mono font-extrabold text-zinc-900 dark:text-white">UO 857</span>
+                            </div>
+                            
+                            <div class="p-8">
+                                <div class="flex justify-between items-center text-center">
+                                    <div class="text-left">
+                                        <h4 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white">NRT</h4>
+                                        <p class="text-2xl font-bold text-zinc-800 dark:text-zinc-200 mt-2 font-mono">08:00</p>
+                                        <p class="text-xs sm:text-sm text-zinc-400 mt-0.5">Narita Terminal 2</p>
                                     </div>
+                                    
+                                    <div class="flex-grow px-5 flex flex-col items-center justify-center relative">
+                                        <div class="w-full border-t-2 border-dashed border-zinc-200 dark:border-zinc-800 absolute top-5"></div>
+                                        <svg class="w-9 h-9 text-zinc-400 dark:text-zinc-650 bg-white dark:bg-zinc-900/40 px-2.5 z-10 transform rotate-270" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+                                        
+                                        <!-- Styled Purple Logo Integration -->
+                                        <div class="flex items-center space-x-1 mt-2.5 z-10 px-1 bg-brand-light dark:bg-zinc-900 rounded">
+                                            <svg class="w-4 h-4 text-purple-600 dark:text-purple-400" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M21.5 11.5l-8.5-7.5h-2.5l5.5 7.5h-10l-3.5-3.5h-2l1.5 3.5v1l-1.5 3.5h2l3.5-3.5h10l-5.5 7.5h2.5l8.5-7.5z"/>
+                                            </svg>
+                                            <span class="text-[11px] sm:text-xs text-purple-600 dark:text-purple-400 tracking-wider font-mono font-bold">HK Express</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="text-right">
+                                        <h4 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white">HKG</h4>
+                                        <p class="text-2xl font-bold text-zinc-800 dark:text-zinc-200 mt-2 font-mono">11:45</p>
+                                        <p class="text-xs sm:text-sm text-zinc-400 mt-0.5">Hong Kong</p>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-6 mt-8 pt-6 border-t border-zinc-100 dark:border-zinc-800 text-base">
+                                    <div>
+                                        <span class="text-xs sm:text-sm text-zinc-400 block mb-1">Departure Date</span>
+                                        <span class="font-bold text-zinc-800 dark:text-zinc-200">2 July (Thu)</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="text-xs sm:text-sm text-zinc-400 block mb-1">Departure Terminal</span>
+                                        <span class="font-extrabold text-red-650 dark:text-red-400 text-red-600">Terminal 2</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Airport Bus Timetables -->
+                    <div class="space-y-6 pt-4">
+                        <div class="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800 pb-3">
+                            <h2 class="text-xl font-bold tracking-tight text-zinc-800 dark:text-zinc-200">Airport Bus Hub</h2>
+                            <span class="text-sm text-zinc-400 font-mono">NRT Terminal 2 Arrivals</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <!-- Limousine Bus to Shinjuku -->
+                            <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="airport bus terminal 2 narita limousine bus shinjuku timetable map exit">
+                                <div>
+                                    <div class="flex justify-between items-start mb-4">
+                                        <h4 class="text-lg font-bold text-zinc-900 dark:text-white">To Shinjuku</h4>
+                                        <span class="px-2.5 py-0.5 text-xs font-bold bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded-md">Limousine Bus</span>
+                                    </div>
+                                    <div class="space-y-3.5 text-sm">
+                                        <div class="border-l-2 border-zinc-200 dark:border-zinc-800 pl-3">
+                                            <p class="text-xs text-zinc-400 font-semibold uppercase">07:00 — 08:00 Slots</p>
+                                            <p class="font-bold text-zinc-800 dark:text-zinc-200">Every :10 and :40 minutes</p>
+                                        </div>
+                                        <div class="border-l-2 border-zinc-200 dark:border-zinc-800 pl-3">
+                                            <p class="text-xs text-zinc-400 font-semibold uppercase">09:00 — 11:00 Slots</p>
+                                            <p class="font-bold text-zinc-800 dark:text-zinc-200">Every :10, :30, and :50 minutes</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pt-6 mt-6 border-t border-zinc-100 dark:border-zinc-800 flex gap-3 text-xs font-extrabold">
+                                    <a href="https://www.limousinebus.co.jp/zh-tw/timetable/detail/Narita-Shinjuku/?dir=1&d=2026-06-28" target="_blank" class="flex-1 text-center py-2 bg-zinc-100 dark:bg-zinc-800 rounded-lg hover:bg-zinc-200/50 transition-all">Timetable</a>
+                                    <a href="https://www.limousinebus.co.jp/zh-tw/airport/from-narita/" target="_blank" class="flex-1 text-center py-2 bg-zinc-100 dark:bg-zinc-800 rounded-lg hover:bg-zinc-200/50 transition-all">Map</a>
+                                </div>
+                            </div>
+
+                            <!-- TYO-NRT Bus to Tokyo Station -->
+                            <div class="bg-white dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-850 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="airport bus terminal 2 narita tyo nrt tokyo station timetable map exit bus stop 6">
+                                <div>
+                                    <div class="flex justify-between items-start mb-4">
+                                        <h4 class="text-lg font-bold text-zinc-900 dark:text-white">To Tokyo Station</h4>
+                                        <span class="px-2.5 py-0.5 text-xs font-bold bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded-md">Bus Stop 6</span>
+                                    </div>
+                                    <div class="space-y-3.5 text-sm">
+                                        <div class="border-l-2 border-zinc-200 dark:border-zinc-800 pl-3">
+                                            <p class="text-xs text-zinc-400 font-semibold uppercase">07:00 — 11:00 Slots</p>
+                                            <p class="font-bold text-zinc-800 dark:text-zinc-200">Every 15 minutes departures</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pt-6 mt-6 border-t border-zinc-100 dark:border-zinc-800 flex gap-3 text-xs font-extrabold">
+                                    <a href="https://tyo-nrt.com/wp/wp-content/themes/tyo-nrt/files/timetable_new_horizon.pdf" target="_blank" class="flex-1 text-center py-2 bg-zinc-100 dark:bg-zinc-800 rounded-lg hover:bg-zinc-200/50 transition-all font-bold text-brand-accent">Timetable</a>
+                                    <a href="https://tyo-nrt.com/en/busstop/terminal2" target="_blank" class="flex-1 text-center py-2 bg-zinc-100 dark:bg-zinc-800 rounded-lg hover:bg-zinc-200/50 transition-all">Map</a>
                                 </div>
                             </div>
                         </div>
@@ -1285,10 +1427,10 @@
                 <!-- Right Shuttle Info (4 Cols) -->
                 <div class="md:col-span-4 space-y-8">
                     <div class="flex items-center justify-between">
-                        <h2 class="text-xl font-bold tracking-tight text-zinc-800 dark:text-zinc-200 font-serif">Shuttles</h2>
+                        <h2 class="text-xl font-bold tracking-tight text-zinc-800 dark:text-zinc-200">Shuttles</h2>
                     </div>
 
-                    <div class="bg-zinc-50 dark:bg-zinc-900/20 border border-zinc-200/60 dark:border-zinc-800/60 p-6 rounded-2xl card-item" data-search="shuttle bus narita nrt comfort hotel 05:25 tickets">
+                    <div class="bg-zinc-50 dark:bg-zinc-900/20 border border-zinc-200/60 dark:border-zinc-800/60 p-6 rounded-2xl card-item" data-search="shuttle bus narita nrt comfort hotel 05:25 tickets transit terminal">
                         <div class="flex items-center space-x-2 text-rose-500 mb-5">
                             <svg class="w-5.5 h-5.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
                             <span class="text-xs font-extrabold tracking-widest uppercase">CRITICAL TRANSIT</span>
@@ -1310,7 +1452,7 @@
 
                         <!-- Ticket action alert -->
                         <div class="mt-6 p-4 bg-rose-500/10 rounded-xl border border-rose-500/20">
-                            <p class="text-xs sm:text-sm text-rose-600 dark:text-rose-400 leading-relaxed font-bold">
+                            <p class="text-xs sm:text-sm text-rose-600 dark:text-rose-445 leading-relaxed font-bold">
                                 * Obtain shuttle ticket in advance. Do not delay checkout!
                             </p>
                         </div>
@@ -1333,7 +1475,6 @@
             </div>
         </div>
     </footer>
-
 
     <!-- Tab transitions & logic -->
     <script>
@@ -1390,10 +1531,6 @@
             if (targetContent) {
                 targetContent.classList.remove('hidden');
             }
-
-            // Clear Search on Tab Switch
-            document.getElementById('searchInput').value = '';
-            filterItems('');
         }
 
         // Shop Filtering by Area
@@ -1421,33 +1558,77 @@
             });
         }
 
-        // Real-time Global Search Filter
+        // Real-time Global Cross-Tab Search Filter
         function filterItems(query) {
             const cleanQuery = query.toLowerCase().trim();
             const cards = document.querySelectorAll('.card-item');
 
-            cards.forEach(card => {
-                const searchableText = card.getAttribute('data-search') ? card.getAttribute('data-search').toLowerCase() : '';
-                if (searchableText.includes(cleanQuery)) {
+            // Synchronize the search inputs on different breakpoints
+            const dInput = document.getElementById('searchInput');
+            const mInput = document.getElementById('searchInputMobile');
+            if (dInput && dInput.value !== query) dInput.value = query;
+            if (mInput && mInput.value !== query) mInput.value = query;
+
+            if (cleanQuery === '') {
+                // Return everything back to standard, vibrant display states
+                cards.forEach(card => {
                     card.classList.remove('opacity-20');
-                    // If on shop page, respect the area filter too
                     if (card.classList.contains('shop-card')) {
+                        // Respect active Area filters when search is empty
                         const activeAreaBtn = document.querySelector('.area-btn.bg-zinc-900, .area-btn.dark\\:bg-white');
                         const activeArea = activeAreaBtn ? activeAreaBtn.id.replace('area-', '') : 'all';
                         const itemArea = card.getAttribute('data-area');
                         if (activeArea === 'all' || itemArea === activeArea || (activeArea === '新宿' && itemArea === '新宿')) {
                             card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
                         }
                     } else {
                         card.style.display = '';
+                    }
+                });
+                return;
+            }
+
+            let matchingTabs = new Set();
+            let hasMatchInActiveTab = false;
+
+            // Extract what tab is currently selected
+            const activeTabBtn = document.querySelector('.tab-btn.border-zinc-900, .tab-btn.dark\\:border-white');
+            const activeTabId = activeTabBtn ? activeTabBtn.id.replace('tab-', '') : 'bookings';
+
+            cards.forEach(card => {
+                const searchableText = card.getAttribute('data-search') ? card.getAttribute('data-search').toLowerCase() : '';
+                const closestTabContent = card.closest('.tab-content');
+                const cardTabId = closestTabContent ? closestTabContent.id.replace('content-', '') : '';
+
+                if (searchableText.includes(cleanQuery)) {
+                    card.classList.remove('opacity-20');
+                    if (card.classList.contains('shop-card')) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = '';
+                    }
+                    
+                    if (cardTabId) {
+                        matchingTabs.add(cardTabId);
+                        if (cardTabId === activeTabId) {
+                            hasMatchInActiveTab = true;
+                        }
                     }
                 } else {
                     card.classList.add('opacity-20');
                 }
             });
+
+            // If there's a match, but none exists on current active tab, programmatically redirect to the first matching tab
+            if (matchingTabs.size > 0 && !hasMatchInActiveTab) {
+                const firstMatchingTab = Array.from(matchingTabs)[0];
+                switchTab(firstMatchingTab);
+            }
         }
 
-        // Persistent checklists state manager
+        // Persistent Checkbox State Handlers
         function saveCheckboxState(id) {
             const checkbox = document.getElementById(id);
             if (checkbox) {
@@ -1456,17 +1637,11 @@
         }
 
         function loadCheckboxStates() {
-            const ids = [
-                'vessel_collect_nike',
-                'vessel_collect_snidel',
-                'vessel_collect_shoes',
-                'apa_collect_coffee'
-            ];
-            ids.forEach(id => {
-                const savedVal = localStorage.getItem(id);
-                const checkbox = document.getElementById(id);
-                if (checkbox && savedVal !== null) {
-                    checkbox.checked = (savedVal === 'true');
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                const savedValue = localStorage.getItem(checkbox.id);
+                if (savedValue !== null) {
+                    checkbox.checked = savedValue === 'true';
                 }
             });
         }
@@ -1486,13 +1661,13 @@
                 clockEl.textContent = `Tokyo: ${formatter.format(new Date())}`;
             }
         }
-        setInterval(updateTokyoTime, 1000);
-        updateTokyoTime();
 
-        // Load checkbox states on startup
-        window.addEventListener('DOMContentLoaded', () => {
+        // Run On Page Load
+        window.onload = function() {
             loadCheckboxStates();
-        });
+            updateTokyoTime();
+            setInterval(updateTokyoTime, 1000);
+        };
     </script>
 </body>
 </html>
