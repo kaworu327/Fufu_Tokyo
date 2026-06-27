@@ -443,6 +443,9 @@
                 <button onclick="filterRestaurant('sushi')" id="res-sushi" class="res-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-100 dark:bg-zinc-900 text-zinc-650 dark:text-zinc-400 hover:bg-zinc-200/50 focus:outline-none">
                     Sushi
                 </button>
+                <button onclick="filterRestaurant('western')" id="res-western" class="res-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-100 dark:bg-zinc-900 text-zinc-650 dark:text-zinc-400 hover:bg-zinc-200/50 focus:outline-none">
+                    Western
+                </button>
                 <button onclick="filterRestaurant('others')" id="res-others" class="res-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-100 dark:bg-zinc-900 text-zinc-650 dark:text-zinc-400 hover:bg-zinc-200/50 focus:outline-none">
                     Others
                 </button>
@@ -450,6 +453,29 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6" id="restaurantsGrid">
                 
+                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 restaurant-card card-item" data-category="western" data-search="la bettola da ochiai italian restaurant dining 30/6 western ginza pasta uni 3.69">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <span class="text-xs tracking-wider uppercase font-bold text-zinc-400 font-mono">Western / Italian</span>
+                            <span class="px-2.5 py-1 text-xs font-extrabold bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded">Tabelog: 3.69 ★</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-zinc-900 dark:text-white mt-4 font-serif">LA BETTOLA da Ochiai</h4>
+                        <p class="text-sm text-zinc-500 mt-2">Legendary Italian dining reservation. Renowned for rich classic courses, premium hospitality, and iconic fresh uni pasta.</p>
+                    </div>
+                    <div class="pt-4 mt-6 border-t border-zinc-100 dark:border-zinc-800 flex flex-col space-y-2.5">
+                        <div class="flex justify-between items-center text-sm">
+                            <a href="https://tabelog.com/tokyo/A1313/A131301/13002504/" target="_blank" class="text-zinc-400 hover:text-zinc-900 dark:hover:white font-semibold">Tabelog ↗</a>
+                            <a href="https://maps.app.goo.gl/gYdZ5dyvb2FmpLjf8" target="_blank" class="inline-flex items-center space-x-1 text-zinc-900 dark:text-white hover:underline font-bold">
+                                <span>Map</span>
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            </a>
+                        </div>
+                        <a href="https://tabelog.com/tokyo/A1313/A131301/13002504/" target="_blank" class="block w-full text-center py-2 bg-zinc-900 dark:bg-white text-brand-light dark:text-brand-dark rounded-xl text-sm font-bold hover:opacity-90 transition-all">
+                            View on Tabelog ↗
+                        </a>
+                    </div>
+                </div>
+
                 <div class="bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 restaurant-card card-item" data-category="ramen" data-search="らぁ麺や 嶋 shima raman ramen 4.07 tablecheck shinjuku booking maps">
                     <div>
                         <div class="flex justify-between items-start">
@@ -651,6 +677,9 @@
                 <button onclick="filterArea('中目黑')" id="area-中目黑" class="area-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-100 dark:bg-zinc-900 text-zinc-650 dark:text-zinc-400 hover:bg-zinc-200/50 focus:outline-none">
                     中目黑
                 </button>
+                <button onclick="filterArea('銀座')" id="area-銀座" class="area-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-100 dark:bg-zinc-900 text-zinc-650 dark:text-zinc-400 hover:bg-zinc-200/50 focus:outline-none">
+                    銀座 (Ginza)
+                </button>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6" id="shopsGrid">
@@ -776,6 +805,118 @@
                             </div>
                         </div>
 
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 shop-card card-item" data-area="新宿" data-search="biccamera bic camera 新宿 新宿東口店 electronics sony wf-1000xm6 earphone dbs card pay target purchase">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <span class="text-xs tracking-wider uppercase font-bold text-zinc-400 font-mono">新宿</span>
+                            <span class="px-2.5 py-1 text-xs uppercase font-bold bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded">Electronics</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-zinc-900 dark:text-white mt-4 font-serif">BicCamera 新宿東口店</h4>
+                        <div class="mt-4 p-4 bg-zinc-50 dark:bg-zinc-900/80 rounded-xl border border-zinc-200/50 dark:border-zinc-800/50">
+                            <p class="text-xs text-zinc-400 uppercase font-bold tracking-wider mb-1">Target Purchase</p>
+                            <a href="https://www.biccamera.com/bc/item/14847810/?srsltid=AfmBOor-8BzCpeujPSJazDvHnRMgk5Zbxcv6-StLn5bkNWv_zS6JucuE" target="_blank" class="font-bold text-zinc-900 dark:text-white hover:underline block text-sm sm:text-base">
+                                Sony WF-1000XM6 (White then Black) ↗
+                            </a>
+                        </div>
+                        <div class="mt-3.5 p-3.5 bg-amber-500/10 dark:bg-amber-450/10 rounded-xl border border-amber-500/20 dark:border-amber-450/20">
+                            <p class="text-xs text-amber-700 dark:text-amber-400 leading-relaxed font-bold flex items-center gap-1.5">
+                                <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                <span>Note: Use DBS Card to pay</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="pt-4 mt-6 border-t border-zinc-100 dark:border-zinc-800 flex justify-between items-center text-sm">
+                        <span class="text-zinc-400 font-medium">Bic Camera Shinjuku</span>
+                        <a href="https://maps.app.goo.gl/EM6ciDSPZgM3sGRw9" target="_blank" class="inline-flex items-center space-x-1.5 text-sm text-zinc-900 dark:text-white hover:underline font-bold">
+                            <span>Map</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 shop-card card-item" data-area="銀座" data-search="biccamera bic camera 有樂町店 yurakucho electronics sony wf-1000xm6 earphone dbs card pay ginza 銀座">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <span class="text-xs tracking-wider uppercase font-bold text-zinc-400 font-mono">銀座 / 有樂町</span>
+                            <span class="px-2.5 py-1 text-xs uppercase font-bold bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded">Electronics</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-zinc-900 dark:text-white mt-4 font-serif">BicCamera 有樂町店</h4>
+                        <div class="mt-4 p-4 bg-zinc-50 dark:bg-zinc-900/80 rounded-xl border border-zinc-200/50 dark:border-zinc-800/50">
+                            <p class="text-xs text-zinc-400 uppercase font-bold tracking-wider mb-1">Target Purchase</p>
+                            <a href="https://www.biccamera.com/bc/item/14847810/?srsltid=AfmBOor-8BzCpeujPSJazDvHnRMgk5Zbxcv6-StLn5bkNWv_zS6JucuE" target="_blank" class="font-bold text-zinc-900 dark:text-white hover:underline block text-sm sm:text-base">
+                                Sony WF-1000XM6 (White then Black) ↗
+                            </a>
+                        </div>
+                        <div class="mt-3.5 p-3.5 bg-amber-500/10 dark:bg-amber-450/10 rounded-xl border border-amber-500/20 dark:border-amber-450/20">
+                            <p class="text-xs text-amber-700 dark:text-amber-400 leading-relaxed font-bold flex items-center gap-1.5">
+                                <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                <span>Note: Use DBS Card to pay</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="pt-4 mt-6 border-t border-zinc-100 dark:border-zinc-800 flex justify-between items-center text-sm">
+                        <span class="text-zinc-400 font-medium">Bic Camera Yurakucho</span>
+                        <a href="https://maps.app.goo.gl/NoisEK9BfJGYCFQTA" target="_blank" class="inline-flex items-center space-x-1.5 text-sm text-zinc-900 dark:text-white hover:underline font-bold">
+                            <span>Map</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 shop-card card-item" data-area="銀座" data-search="ginza 6 gsix 銀座 Ginza 6 luxury shopping mall department">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <span class="text-xs tracking-wider uppercase font-bold text-zinc-400 font-mono">銀座</span>
+                            <span class="px-2.5 py-1 text-xs uppercase font-bold bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded">Shopping Complex</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-zinc-900 dark:text-white mt-4 font-serif">銀座 Ginza 6</h4>
+                        <p class="text-sm text-zinc-500 mt-2">Premier upscale luxury department store complex housing massive global brands, art exhibitions, and fine dining.</p>
+                    </div>
+                    <div class="pt-4 mt-6 border-t border-zinc-100 dark:border-zinc-800 flex justify-between items-center text-sm">
+                        <span class="text-zinc-400 font-medium">G6 Department Store</span>
+                        <a href="https://maps.app.goo.gl/G2yh2QfWkTky9fZq7" target="_blank" class="inline-flex items-center space-x-1.5 text-sm text-zinc-900 dark:text-white hover:underline font-bold">
+                            <span>Map</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 shop-card card-item" data-area="銀座" data-search="matsuya ginza 銀座松屋 department store shopping exit a12">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <span class="text-xs tracking-wider uppercase font-bold text-zinc-400 font-mono">銀座</span>
+                            <span class="px-2.5 py-1 text-xs uppercase font-bold bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded">Department Store</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-zinc-900 dark:text-white mt-4 font-serif">銀座松屋 (Matsuya Ginza)</h4>
+                        <p class="text-sm text-zinc-500 mt-2">Classic historical department store. Go to the 3F Tourist Counter first for a 5% discount coupon!</p>
+                    </div>
+                    <div class="pt-4 mt-6 border-t border-zinc-100 dark:border-zinc-800 flex justify-between items-center text-sm">
+                        <span class="text-zinc-400 font-medium">Ginza Exit A12</span>
+                        <a href="https://maps.app.goo.gl/w5rCZrqr17aiGcAo6" target="_blank" class="inline-flex items-center space-x-1.5 text-sm text-zinc-900 dark:text-white hover:underline font-bold">
+                            <span>Map</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 shop-card card-item" data-area="銀座" data-search="kayanoya dashi broth soup ginza 銀座 茅乃舎 food gourmet souvenir">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <span class="text-xs tracking-wider uppercase font-bold text-zinc-400 font-mono">銀座</span>
+                            <span class="px-2.5 py-1 text-xs uppercase font-bold bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded">Gourmet Dashi</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-zinc-900 dark:text-white mt-4 font-serif">銀座 茅乃舎</h4>
+                        <p class="text-sm text-zinc-500 mt-2">Legendary Japanese dashi seasoning store. Perfect for premium dashi soup stocks and seasonings to take home.</p>
+                    </div>
+                    <div class="pt-4 mt-6 border-t border-zinc-100 dark:border-zinc-800 flex justify-between items-center text-sm">
+                        <span class="text-zinc-400 font-medium">Kayanoya Ginza</span>
+                        <a href="https://maps.app.goo.gl/Yc54pHbSMaDyDtqg8" target="_blank" class="inline-flex items-center space-x-1.5 text-sm text-zinc-900 dark:text-white hover:underline font-bold">
+                            <span>Map</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        </a>
                     </div>
                 </div>
 
