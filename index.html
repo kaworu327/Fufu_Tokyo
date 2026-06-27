@@ -73,6 +73,12 @@
             </div>
             
             <div class="flex items-center space-x-3 sm:space-x-5">
+                <!-- Flight Countdown Section: Appears only when < 24 hours to flight -->
+                <div id="flightCountdown" class="hidden flex items-center space-x-2 bg-rose-500/10 dark:bg-rose-500/10 border border-rose-500/30 dark:border-rose-500/30 px-3 py-1.5 rounded-xl text-xs shadow-sm">
+                    <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+                    <span class="text-rose-600 dark:text-rose-400 font-bold tracking-tight font-mono" id="countdownText">UO 854 departs in --:--:--</span>
+                </div>
+
                 <div class="flex items-center space-x-2.5 bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/50 dark:border-zinc-800/50 px-3.5 py-1.5 rounded-xl text-xs shadow-sm">
                     <svg class="w-4 h-4 text-amber-500 animate-spin-slow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M14 12a2 2 0 11-4 0 2 2 0 014 0z"/>
@@ -197,8 +203,7 @@
                                         <h3 class="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white mt-3">Hair Cut Reservation</h3>
                                     </div>
                                     <div class="text-right">
-                                        <p class="text-sm font-bold text-zinc-900 dark:text-white">28 Jun 2026</p>
-                                        <p class="text-sm text-zinc-500 font-mono">17:30</p>
+                                        <p class="text-sm font-bold text-zinc-900 dark:text-white">28 Jun 2026</p>                                        <p class="text-sm text-zinc-500 font-mono">17:30</p>
                                     </div>
                                 </div>
                                 <div class="text-base text-zinc-600 dark:text-zinc-300 mb-5 space-y-1">
@@ -298,6 +303,7 @@
                         </p>
                     </div>
                 </div>
+
             </div>
         </div>
 
@@ -309,7 +315,8 @@
                 </div>
 
                 <div class="space-y-8">
-                    <div class="bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-8 transition-all hover:shadow-md card-item" data-search="vessel inn takadanobaba station hotel lodging 28/6 1/7 nike pants snidel clothing shoes collect">
+                    
+                    <div class="bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-8 transition-all hover:shadow-md card-item" data-search="vessel inn takadanobaba station hotel lodging 28/6 1/7 nike pants snidel clothing shoes collect peacock store supermarket donki don quijote">
                         <div class="flex flex-col sm:flex-row justify-between sm:items-start gap-6 mb-6">
                             <div>
                                 <div class="flex items-center space-x-3">
@@ -341,6 +348,26 @@
                                     <input type="checkbox" id="v_collect_shoes" onchange="saveCheckboxState(this.id)" class="mt-0.5 w-4 h-4 rounded border-zinc-300 text-zinc-900 focus:ring-zinc-400 dark:bg-zinc-800 dark:border-zinc-700">
                                     <span class="text-zinc-700 dark:text-zinc-300">Shoes <span class="text-xs text-zinc-400 font-normal">(28 Jun)</span></span>
                                 </label>
+                            </div>
+                        </div>
+
+                        <div class="mb-6 p-5 bg-zinc-50 dark:bg-zinc-900/80 rounded-xl border border-zinc-200/50 dark:border-zinc-800/50">
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-3 flex items-center">
+                                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 mr-2"></span>Nearby Essentials
+                            </h4>
+                            <div class="space-y-3.5 text-sm">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-zinc-700 dark:text-zinc-300 font-medium">Peacock Store超市 高田馬場店</span>
+                                    <a href="https://maps.app.goo.gl/xM3LAFuQH9c4FxuU7" target="_blank" class="text-xs bg-zinc-200/60 dark:bg-zinc-800 hover:bg-zinc-300/80 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 px-2.5 py-1 rounded-md font-bold transition-all inline-flex items-center space-x-1 shrink-0 ml-2">
+                                        <span>Map ↗</span>
+                                    </a>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-zinc-700 dark:text-zinc-300 font-medium">Donki 高田馬場駅前店</span>
+                                    <a href="https://maps.app.goo.gl/xqQ6ZJBFUG7EsehJ6" target="_blank" class="text-xs bg-zinc-200/60 dark:bg-zinc-800 hover:bg-zinc-300/80 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 px-2.5 py-1 rounded-md font-bold transition-all inline-flex items-center space-x-1 shrink-0 ml-2">
+                                        <span>Map ↗</span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                         
@@ -394,6 +421,7 @@
                             </a>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -403,19 +431,19 @@
                 <button onclick="filterRestaurant('all')" id="res-all" class="res-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-900 dark:bg-white text-brand-light dark:text-brand-dark focus:outline-none">
                     All Categories
                 </button>
-                <button onclick="filterRestaurant('ramen')" id="res-ramen" class="res-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200/50 focus:outline-none">
+                <button onclick="filterRestaurant('ramen')" id="res-ramen" class="res-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-100 dark:bg-zinc-900 text-zinc-650 dark:text-zinc-400 hover:bg-zinc-200/50 focus:outline-none">
                     Ramen
                 </button>
-                <button onclick="filterRestaurant('steak')" id="res-steak" class="res-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200/50 focus:outline-none">
+                <button onclick="filterRestaurant('steak')" id="res-steak" class="res-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-100 dark:bg-zinc-900 text-zinc-650 dark:text-zinc-400 hover:bg-zinc-200/50 focus:outline-none">
                     Steak
                 </button>
-                <button onclick="filterRestaurant('bbq')" id="res-bbq" class="res-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200/50 focus:outline-none">
+                <button onclick="filterRestaurant('bbq')" id="res-bbq" class="res-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-100 dark:bg-zinc-900 text-zinc-650 dark:text-zinc-400 hover:bg-zinc-200/50 focus:outline-none">
                     BBQ
                 </button>
-                <button onclick="filterRestaurant('sushi')" id="res-sushi" class="res-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200/50 focus:outline-none">
+                <button onclick="filterRestaurant('sushi')" id="res-sushi" class="res-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-100 dark:bg-zinc-900 text-zinc-650 dark:text-zinc-400 hover:bg-zinc-200/50 focus:outline-none">
                     Sushi
                 </button>
-                <button onclick="filterRestaurant('others')" id="res-others" class="res-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200/50 focus:outline-none">
+                <button onclick="filterRestaurant('others')" id="res-others" class="res-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-100 dark:bg-zinc-900 text-zinc-650 dark:text-zinc-400 hover:bg-zinc-200/50 focus:outline-none">
                     Others
                 </button>
             </div>
@@ -468,7 +496,7 @@
                     </div>
                 </div>
 
-                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 restaurant-card card-item" data-search="ramen matsui raman ramen shinjuku 3.83 tablecheck booking maps">
+                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 restaurant-card card-item" data-category="ramen" data-search="ramen matsui raman ramen shinjuku 3.83 tablecheck booking maps">
                     <div>
                         <div class="flex justify-between items-start">
                             <span class="text-xs tracking-wider uppercase font-bold text-zinc-400 font-mono">Ramen</span>
@@ -491,7 +519,7 @@
                     </div>
                 </div>
 
-                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 restaurant-card card-item" data-search="麵屋周鄉 shugo raman ramen 3.77 ginza walk-in booking maps">
+                <div class="bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300 restaurant-card card-item" data-category="ramen" data-search="麵屋周鄉 shugo raman ramen 3.77 ginza walk-in booking maps">
                     <div>
                         <div class="flex justify-between items-start">
                             <span class="text-xs tracking-wider uppercase font-bold text-zinc-400 font-mono">Ramen</span>
@@ -611,16 +639,16 @@
                 <button onclick="filterArea('all')" id="area-all" class="area-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-900 dark:bg-white text-brand-light dark:text-brand-dark focus:outline-none">
                     All Areas
                 </button>
-                <button onclick="filterArea('南青山')" id="area-南青山" class="area-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200/50 focus:outline-none">
+                <button onclick="filterArea('南青山')" id="area-南青山" class="area-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-100 dark:bg-zinc-900 text-zinc-650 dark:text-zinc-400 hover:bg-zinc-200/50 focus:outline-none">
                     南青山
                 </button>
-                <button onclick="filterArea('新宿')" id="area-新宿" class="area-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200/50 focus:outline-none">
+                <button onclick="filterArea('新宿')" id="area-新宿" class="area-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-100 dark:bg-zinc-900 text-zinc-650 dark:text-zinc-400 hover:bg-zinc-200/50 focus:outline-none">
                     新宿 & 伊勢丹
                 </button>
-                <button onclick="filterArea('代代木上原')" id="area-代代木上原" class="area-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200/50 focus:outline-none">
+                <button onclick="filterArea('代代木上原')" id="area-代代木上原" class="area-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-100 dark:bg-zinc-900 text-zinc-650 dark:text-zinc-400 hover:bg-zinc-200/50 focus:outline-none">
                     代代木上原
                 </button>
-                <button onclick="filterArea('中目黑')" id="area-中目黑" class="area-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200/50 focus:outline-none">
+                <button onclick="filterArea('中目黑')" id="area-中目黑" class="area-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-100 dark:bg-zinc-900 text-zinc-650 dark:text-zinc-400 hover:bg-zinc-200/50 focus:outline-none">
                     中目黑
                 </button>
             </div>
@@ -631,8 +659,8 @@
                     <div class="flex flex-col md:flex-row justify-between items-start border-b border-zinc-200/60 dark:border-zinc-800/60 pb-6 mb-8 gap-4">
                         <div>
                             <div class="flex flex-wrap items-center gap-3">
-                                <span class="px-3.5 py-1 text-xs uppercase font-extrabold bg-red-650 text-white rounded tracking-widest animate-pulse">SALES ON GOING</span>
-                                <span class="px-3 py-1 text-xs tracking-wider uppercase font-bold bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 rounded">SHINJUKU METROPOLIS</span>
+                                <span class="px-3.5 py-1 text-xs uppercase font-extrabold bg-red-650 text-white tracking-widest animate-pulse">SALES ON GOING</span>
+                                <span class="px-3 py-1 text-xs tracking-wider uppercase font-bold bg-zinc-100 dark:bg-zinc-800 text-zinc-650 dark:text-zinc-400 rounded">SHINJUKU METROPOLIS</span>
                             </div>
                             <h3 class="text-2xl sm:text-3xl font-extrabold text-zinc-900 dark:text-white mt-4">新宿 / 新宿伊勢丹 Checklist</h3>
                         </div>
@@ -1474,55 +1502,7 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
                     
-                    <div class="bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="auralee winter knit hoodies shirt 4 5 3 jacket">
-                        <div>
-                            <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-3">Auralee Winter</h3>
-                            <div class="overflow-x-auto border border-zinc-200 dark:border-zinc-800 rounded-xl">
-                                <table class="w-full text-left border-collapse">
-                                    <thead>
-                                        <tr class="bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 text-xs font-bold uppercase text-zinc-400">
-                                            <th class="py-2.5 px-4">Item</th>
-                                            <th class="py-2.5 px-4">Size</th>
-                                            <th class="py-2.5 px-4">Qty</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="divide-y divide-zinc-100 dark:divide-zinc-800/80 text-sm">
-                                        <tr>
-                                            <td class="py-2.5 px-4 font-medium text-zinc-700 dark:text-zinc-300">薄長袖</td>
-                                            <td class="py-2.5 px-4 text-orange-600 dark:text-orange-400 font-bold">4-5 (Prefer 5)</td>
-                                            <td class="py-2.5 px-4 font-mono">3</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="py-2.5 px-4 font-medium text-zinc-700 dark:text-zinc-300">較厚長袖</td>
-                                            <td class="py-2.5 px-4 text-orange-600 dark:text-orange-400 font-bold">4-5 (Prefer 5)</td>
-                                            <td class="py-2.5 px-4 font-mono">3</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="py-2.5 px-4 font-medium text-zinc-700 dark:text-zinc-300">Stand Up 長袖</td>
-                                            <td class="py-2.5 px-4 text-orange-600 dark:text-orange-400 font-bold">5</td>
-                                            <td class="py-2.5 px-4 font-mono">1</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="py-2.5 px-4 font-medium text-zinc-700 dark:text-zinc-300">Hoodies</td>
-                                            <td class="py-2.5 px-4 text-orange-600 dark:text-orange-400 font-bold">4</td>
-                                            <td class="py-2.5 px-4 font-mono">2</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="py-2.5 px-4 font-medium text-zinc-700 dark:text-zinc-300">樽頸長袖</td>
-                                            <td class="py-2.5 px-4 text-orange-600 dark:text-orange-400 font-bold">3</td>
-                                            <td class="py-2.5 px-4 font-mono">1</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="py-2.5 px-4 font-medium text-zinc-700 dark:text-zinc-300">羊毛恤衫</td>
-                                            <td class="py-2.5 px-4 text-orange-600 dark:text-orange-400 font-bold">4</td>
-                                            <td class="py-2.5 px-4 font-mono">1</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
+                    <!-- 1. Auralee (Summer) -->
                     <div class="bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="auralee summer t shirt shirts denim 4 5 pocket">
                         <div>
                             <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-3">Auralee Summer</h3>
@@ -1577,9 +1557,70 @@
                         </div>
                     </div>
 
-                    <div class="bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="sacai sizes pants shirt 2 3">
+                    <!-- 2. Auralee (Winter) -->
+                    <div class="bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="auralee winter knit hoodies shirt 4 5 3 jacket light green jeans">
                         <div>
-                            <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-3">Sacai</h3>
+                            <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-3">Auralee Winter</h3>
+                            <div class="overflow-x-auto border border-zinc-200 dark:border-zinc-800 rounded-xl">
+                                <table class="w-full text-left border-collapse">
+                                    <thead>
+                                        <tr class="bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 text-xs font-bold uppercase text-zinc-400">
+                                            <th class="py-2.5 px-4">Item</th>
+                                            <th class="py-2.5 px-4">Size</th>
+                                            <th class="py-2.5 px-4">Qty</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-zinc-100 dark:divide-zinc-800/80 text-sm">
+                                        <tr>
+                                            <td class="py-2.5 px-4 font-medium text-zinc-700 dark:text-zinc-300">薄長袖</td>
+                                            <td class="py-2.5 px-4 text-orange-600 dark:text-orange-400 font-bold">4-5 (Prefer 5)</td>
+                                            <td class="py-2.5 px-4 font-mono">3</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2.5 px-4 font-medium text-zinc-700 dark:text-zinc-300">較厚長袖</td>
+                                            <td class="py-2.5 px-4 text-orange-600 dark:text-orange-400 font-bold">4-5 (Prefer 5)</td>
+                                            <td class="py-2.5 px-4 font-mono">3</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2.5 px-4 font-medium text-zinc-700 dark:text-zinc-300">Stand Up 長袖</td>
+                                            <td class="py-2.5 px-4 text-orange-600 dark:text-orange-400 font-bold">5</td>
+                                            <td class="py-2.5 px-4 font-mono">1</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2.5 px-4 font-medium text-zinc-700 dark:text-zinc-300">Hoodies</td>
+                                            <td class="py-2.5 px-4 text-orange-600 dark:text-orange-400 font-bold">4</td>
+                                            <td class="py-2.5 px-4 font-mono">2</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2.5 px-4 font-medium text-zinc-700 dark:text-zinc-300">樽頸長袖</td>
+                                            <td class="py-2.5 px-4 text-orange-600 dark:text-orange-400 font-bold">3</td>
+                                            <td class="py-2.5 px-4 font-mono">1</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2.5 px-4 font-medium text-zinc-700 dark:text-zinc-300">羊毛恤衫</td>
+                                            <td class="py-2.5 px-4 text-orange-600 dark:text-orange-400 font-bold">4</td>
+                                            <td class="py-2.5 px-4 font-mono">1</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2.5 px-4 font-medium text-zinc-700 dark:text-zinc-300">Light Green Jacket</td>
+                                            <td class="py-2.5 px-4 text-orange-600 dark:text-orange-400 font-bold">5</td>
+                                            <td class="py-2.5 px-4 font-mono">1</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2.5 px-4 font-medium text-zinc-700 dark:text-zinc-300">Jeans Jacket</td>
+                                            <td class="py-2.5 px-4 text-orange-600 dark:text-orange-400 font-bold">5</td>
+                                            <td class="py-2.5 px-4 font-mono">1</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. A. PRESSE -->
+                    <div class="bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="a presse sizes jeans jacket green jacket 48 2 34/32">
+                        <div>
+                            <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-3">A. PRESSE</h3>
                             <div class="overflow-x-auto border border-zinc-200 dark:border-zinc-800 rounded-xl">
                                 <table class="w-full text-left border-collapse">
                                     <thead>
@@ -1590,12 +1631,16 @@
                                     </thead>
                                     <tbody class="divide-y divide-zinc-100 dark:divide-zinc-800/80 text-sm">
                                         <tr>
-                                            <td class="py-2.5 px-4 font-medium text-zinc-700 dark:text-zinc-300">Shirt</td>
+                                            <td class="py-2.5 px-4 font-medium text-zinc-700 dark:text-zinc-300">Jeans Jacket</td>
+                                            <td class="py-2.5 px-4 text-orange-600 dark:text-orange-400 font-bold">48</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2.5 px-4 font-medium text-zinc-700 dark:text-zinc-300">Green Jacket</td>
                                             <td class="py-2.5 px-4 text-orange-600 dark:text-orange-400 font-bold">2</td>
                                         </tr>
                                         <tr>
-                                            <td class="py-2.5 px-4 font-medium text-zinc-700 dark:text-zinc-300">Pants</td>
-                                            <td class="py-2.5 px-4 text-orange-600 dark:text-orange-400 font-bold">3</td>
+                                            <td class="py-2.5 px-4 font-medium text-zinc-700 dark:text-zinc-300">Jeans</td>
+                                            <td class="py-2.5 px-4 text-orange-600 dark:text-orange-400 font-bold">34/32</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1603,6 +1648,7 @@
                         </div>
                     </div>
 
+                    <!-- 4. N. Hoolywood (Alphabetical) -->
                     <div class="bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="n hoolywood sizes t shirt shirt pants jacket m l 40">
                         <div>
                             <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-3">N. Hoolywood</h3>
@@ -1637,6 +1683,34 @@
                         </div>
                     </div>
 
+                    <!-- 5. Sacai (Alphabetical) -->
+                    <div class="bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="sacai sizes pants shirt 2 3">
+                        <div>
+                            <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-3">Sacai</h3>
+                            <div class="overflow-x-auto border border-zinc-200 dark:border-zinc-800 rounded-xl">
+                                <table class="w-full text-left border-collapse">
+                                    <thead>
+                                        <tr class="bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 text-xs font-bold uppercase text-zinc-400">
+                                            <th class="py-2.5 px-4">Item</th>
+                                            <th class="py-2.5 px-4">Size</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-zinc-100 dark:divide-zinc-800/80 text-sm">
+                                        <tr>
+                                            <td class="py-2.5 px-4 font-medium text-zinc-700 dark:text-zinc-300">Shirt</td>
+                                            <td class="py-2.5 px-4 text-orange-600 dark:text-orange-400 font-bold">2</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2.5 px-4 font-medium text-zinc-700 dark:text-zinc-300">Pants</td>
+                                            <td class="py-2.5 px-4 text-orange-600 dark:text-orange-400 font-bold">3</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 6. United Tokyo / Public Tokyo (Alphabetical) -->
                     <div class="bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="united tokyo public tokyo sizes t shirt shirt pants 2">
                         <div>
                             <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-3">United Tokyo / Public Tokyo</h3>
@@ -1667,24 +1741,38 @@
                         </div>
                     </div>
 
-                    <div class="bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="uniqlo sizes shirt pants xl l">
+                    <!-- 7. Combined Uniqlo & Muji (Alphabetical) -->
+                    <div class="bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="uniqlo muji sizes shirt pants warm pant under pant xl l">
                         <div>
-                            <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-3">Uniqlo</h3>
+                            <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-3">Uniqlo & Muji</h3>
                             <div class="overflow-x-auto border border-zinc-200 dark:border-zinc-800 rounded-xl">
                                 <table class="w-full text-left border-collapse">
                                     <thead>
                                         <tr class="bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 text-xs font-bold uppercase text-zinc-400">
+                                            <th class="py-2.5 px-4">Brand</th>
                                             <th class="py-2.5 px-4">Item</th>
                                             <th class="py-2.5 px-4">Size</th>
                                         </tr>
                                     </thead>
                                     <tbody class="divide-y divide-zinc-100 dark:divide-zinc-800/80 text-sm">
                                         <tr>
+                                            <td class="py-2.5 px-4 font-bold text-zinc-400">Uniqlo</td>
                                             <td class="py-2.5 px-4 font-medium text-zinc-700 dark:text-zinc-300">Shirt</td>
                                             <td class="py-2.5 px-4 text-orange-600 dark:text-orange-400 font-bold">XL</td>
                                         </tr>
                                         <tr>
+                                            <td class="py-2.5 px-4 font-bold text-zinc-400">Uniqlo</td>
                                             <td class="py-2.5 px-4 font-medium text-zinc-700 dark:text-zinc-300">Pants</td>
+                                            <td class="py-2.5 px-4 text-orange-600 dark:text-orange-400 font-bold">L</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2.5 px-4 font-bold text-zinc-400">Muji</td>
+                                            <td class="py-2.5 px-4 font-medium text-zinc-700 dark:text-zinc-300">Warm pant</td>
+                                            <td class="py-2.5 px-4 text-orange-600 dark:text-orange-400 font-bold">L</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2.5 px-4 font-bold text-zinc-400">Muji</td>
+                                            <td class="py-2.5 px-4 font-medium text-zinc-700 dark:text-zinc-300">Under pant</td>
                                             <td class="py-2.5 px-4 text-orange-600 dark:text-orange-400 font-bold">L</td>
                                         </tr>
                                     </tbody>
@@ -1693,9 +1781,10 @@
                         </div>
                     </div>
 
-                    <div class="bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="muji sizes warm pant under pant l">
+                    <!-- 8. Others (Last) -->
+                    <div class="bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="others gp jeans gp pocket t gp pocket-t gp 无领外套 unlikely jacket sizes 3 m/l o/s m">
                         <div>
-                            <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-3">Muji</h3>
+                            <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-3">Others</h3>
                             <div class="overflow-x-auto border border-zinc-200 dark:border-zinc-800 rounded-xl">
                                 <table class="w-full text-left border-collapse">
                                     <thead>
@@ -1706,12 +1795,20 @@
                                     </thead>
                                     <tbody class="divide-y divide-zinc-100 dark:divide-zinc-800/80 text-sm">
                                         <tr>
-                                            <td class="py-2.5 px-4 font-medium text-zinc-700 dark:text-zinc-300">Warm pant</td>
-                                            <td class="py-2.5 px-4 text-orange-600 dark:text-orange-400 font-bold">L</td>
+                                            <td class="py-2.5 px-4 font-medium text-zinc-700 dark:text-zinc-300">GP Jeans</td>
+                                            <td class="py-2.5 px-4 text-orange-600 dark:text-orange-400 font-bold">3</td>
                                         </tr>
                                         <tr>
-                                            <td class="py-2.5 px-4 font-medium text-zinc-700 dark:text-zinc-300">Under pant</td>
-                                            <td class="py-2.5 px-4 text-orange-600 dark:text-orange-400 font-bold">L</td>
+                                            <td class="py-2.5 px-4 font-medium text-zinc-700 dark:text-zinc-300">GP Pocket T</td>
+                                            <td class="py-2.5 px-4 text-orange-600 dark:text-orange-400 font-bold">M/L</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2.5 px-4 font-medium text-zinc-700 dark:text-zinc-300">GP 無領外套</td>
+                                            <td class="py-2.5 px-4 text-orange-600 dark:text-orange-400 font-bold">O/S</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2.5 px-4 font-medium text-zinc-700 dark:text-zinc-300">Unlikely Jacket</td>
+                                            <td class="py-2.5 px-4 text-orange-600 dark:text-orange-400 font-bold">M</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1776,7 +1873,7 @@
                                     </div>
                                     <div class="text-right">
                                         <span class="text-xs sm:text-sm text-zinc-400 block mb-1">Departure Terminal</span>
-                                        <span class="font-extrabold text-red-650 dark:text-red-400 text-red-650">Terminal 2</span>
+                                        <span class="font-extrabold text-red-650 dark:text-red-400">Terminal 2</span>
                                     </div>
                                 </div>
                             </div>
@@ -1824,7 +1921,7 @@
                                     </div>
                                     <div class="text-right">
                                         <span class="text-xs sm:text-sm text-zinc-400 block mb-1">Departure Terminal</span>
-                                        <span class="font-extrabold text-red-650 dark:text-red-400 text-red-650">Terminal 2</span>
+                                        <span class="font-extrabold text-red-650 dark:text-red-400">Terminal 2</span>
                                     </div>
                                 </div>
                             </div>
@@ -1857,12 +1954,12 @@
                                     </div>
                                 </div>
                                 <div class="pt-6 mt-6 border-t border-zinc-100 dark:border-zinc-800 flex gap-3 text-xs font-extrabold">
-                                    <a href="https://www.limousinebus.co.jp/zh-tw/timetable/detail/Narita-Shinjuku/?dir=1&d=2026-06-28" target="_blank" class="flex-1 text-center py-2 bg-zinc-100 dark:bg-zinc-800 rounded-lg hover:bg-zinc-200/50 transition-all">Timetable</a>
+                                    <a href="https://www.limousinebus.co.jp/zh-tw/timetable/detail/Narita-Shinjuku/?dir=1&d=2026-06-28" target="_blank" class="flex-1 text-center py-2 bg-zinc-100 dark:bg-zinc-800 rounded-lg hover:bg-zinc-200/50 transition-all font-bold text-brand-accent">Timetable</a>
                                     <a href="https://www.limousinebus.co.jp/zh-tw/airport/from-narita/" target="_blank" class="flex-1 text-center py-2 bg-zinc-100 dark:bg-zinc-800 rounded-lg hover:bg-zinc-200/50 transition-all">Map</a>
                                 </div>
                             </div>
 
-                            <div class="bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="airport bus terminal 2 narita tyo nrt tokyo station timetable map exit bus stop 6">
+                            <div class="bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 p-6 rounded-2xl flex flex-col justify-between card-item" data-search="airport bus terminal 2 narita tyo nrt tokyo station timetable map exit bus stop 6 chuo line jc shinjuku">
                                 <div>
                                     <div class="flex justify-between items-start mb-4">
                                         <h4 class="text-lg font-bold text-zinc-900 dark:text-white">To Tokyo Station</h4>
@@ -1873,6 +1970,13 @@
                                             <p class="text-xs text-zinc-400 font-semibold uppercase">07:00 — 11:00 Slots</p>
                                             <p class="font-bold text-zinc-800 dark:text-zinc-200">Every 15 minutes departures</p>
                                         </div>
+                                    </div>
+
+                                    <div class="mt-4 p-3 bg-amber-500/10 dark:bg-amber-450/10 rounded-xl border border-amber-500/20 dark:border-amber-450/20">
+                                        <p class="text-xs text-amber-700 dark:text-amber-400 leading-relaxed font-bold flex items-center gap-1.5">
+                                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                            <span>Take 中央線 (JC) to Shinjuku</span>
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="pt-6 mt-6 border-t border-zinc-100 dark:border-zinc-800 flex gap-3 text-xs font-extrabold">
@@ -1916,6 +2020,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
 
@@ -2016,7 +2121,7 @@
         function filterRestaurant(categoryName) {
             const buttons = document.querySelectorAll('.res-btn');
             buttons.forEach(btn => {
-                btn.className = "res-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200/50 focus:outline-none";
+                btn.className = "res-btn px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all bg-zinc-100 dark:bg-zinc-900 text-zinc-650 dark:text-zinc-400 hover:bg-zinc-200/50 focus:outline-none";
             });
 
             const activeBtn = document.getElementById(`res-${categoryName}`);
@@ -2117,6 +2222,7 @@
             }
         }
 
+        // Load checkboxes
         function loadCheckboxStates() {
             const checkboxes = document.querySelectorAll('input[type="checkbox"]');
             checkboxes.forEach(checkbox => {
@@ -2125,6 +2231,52 @@
                     checkbox.checked = savedValue === 'true';
                 }
             });
+        }
+
+        function updateFlightCountdown() {
+            const countdownEl = document.getElementById('flightCountdown');
+            const countdownTextEl = document.getElementById('countdownText');
+            if (!countdownEl || !countdownTextEl) return;
+
+            const now = new Date();
+
+            // Outbound Flight: June 28, 2026, 01:15 HKT (GMT+8) -> June 27, 2026, 17:15:00 UTC
+            const outboundTime = new Date(Date.UTC(2026, 5, 27, 17, 15, 0));
+
+            // Return Flight: July 2, 2026, 08:00 JST (GMT+9) -> July 1, 2026, 23:00:00 UTC
+            const returnTime = new Date(Date.UTC(2026, 6, 1, 23, 0, 0));
+
+            let targetFlight = null;
+            let flightCode = "";
+            let route = "";
+
+            const msToOutbound = outboundTime - now;
+            const msToReturn = returnTime - now;
+
+            // Show countdown if the flight is within 24 hours of departing and hasn't left yet
+            if (msToOutbound > 0 && msToOutbound < 24 * 60 * 60 * 1000) {
+                targetFlight = outboundTime;
+                flightCode = "UO 854";
+                route = "HKG ➔ NRT";
+            } else if (msToReturn > 0 && msToReturn < 24 * 60 * 60 * 1000) {
+                targetFlight = returnTime;
+                flightCode = "UO 857";
+                route = "NRT ➔ HKG";
+            }
+
+            if (targetFlight) {
+                const diffMs = targetFlight - now;
+                const diffHrs = Math.floor(diffMs / (1000 * 60 * 60));
+                const diffMins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+                const diffSecs = Math.floor((diffMs % (1000 * 60)) / 1000);
+
+                const pad = (num) => String(num).padStart(2, '0');
+
+                countdownTextEl.textContent = `${flightCode} (${route}): ${pad(diffHrs)}h ${pad(diffMins)}m ${pad(diffSecs)}s remaining`;
+                countdownEl.classList.remove('hidden');
+            } else {
+                countdownEl.classList.add('hidden');
+            }
         }
 
         // Tokyo Time Clock Update
@@ -2141,6 +2293,8 @@
                 const formatter = new Intl.DateTimeFormat([], options);
                 clockEl.textContent = `Tokyo: ${formatter.format(new Date())}`;
             }
+            // Seamlessly trigger countdown calculations in synchronization with the clock updates
+            updateFlightCountdown();
         }
 
         window.onload = function() {
